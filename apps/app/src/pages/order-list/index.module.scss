@@ -1,0 +1,19 @@
+.root {
+  background-color: #f6f6f6;
+}
+
+.content {
+  padding: 16px 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+
+
+.actionBarLabel {
+  .text {
+    font-size: 26px;
+    color: #222;
+  }
+}

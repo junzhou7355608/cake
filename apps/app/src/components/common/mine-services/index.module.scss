@@ -1,0 +1,27 @@
+.services {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-top: 24px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+  transition: all 0.1s;
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+.icon {}
+
+.text {
+  font-size: 24px;
+  color: #555;
+  font-weight: 400;
+  padding-top: 16px;
+}

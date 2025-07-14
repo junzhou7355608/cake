@@ -1,0 +1,26 @@
+.item {
+  padding-block: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.name {
+  font-size: 28px;
+  color: #222;
+}
+
+.subName {
+  font-size: 24px;
+  color: #999;
+  padding-top: 2px;
+}
+
+.desc {
+  font-size: 24px;
+  color: #999;
+  padding-top: 8px;
+  display: flex;
+  gap: 16px;
+}
