@@ -3,5 +3,17 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "prettier.enable": true,
+  "eslint.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+
+  "[scss]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+
+  "files.insertFinalNewline": true,
 }
