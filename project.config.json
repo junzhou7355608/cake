@@ -1,6 +1,6 @@
 {
-  "miniprogramRoot": "apps/app/dist/",
-  "cloudfunctionRoot": "server/functions/",
+  "miniprogramRoot": "apps/mini-app/dist",
+  "cloudfunctionRoot": "apps/cloud-functions/dist",
   "projectname": "cake",
   "description": "盈盈甜品屋",
   "appid": "wx0d482e9b08e60cf1",
