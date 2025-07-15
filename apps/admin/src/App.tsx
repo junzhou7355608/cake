@@ -1,7 +1,12 @@
 import { Routes } from '@generouted/react-router'
+import Layout from "@/layouts"
 
 function App() {
-  return <Routes />
+  return (
+    <Layout>
+      <Routes />
+    </Layout>
+  )
 }
 
 export default App
