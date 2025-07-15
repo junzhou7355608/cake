@@ -1,1 +1,11 @@
 @import 'tailwindcss';
+
+
+@theme {
+  --color-bg-base: #f6f6f6;
+  --height-tabbar: 80px;
+}
+
+body {
+  background-color: var(--color-bg-base);
+}
