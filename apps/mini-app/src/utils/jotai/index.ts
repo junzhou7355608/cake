@@ -5,7 +5,7 @@ import type {
   ExtractAtomArgs,
   ExtractAtomResult,
   ExtractAtomValue,
-  WritableAtom,
+  WritableAtom
 } from 'jotai'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 
@@ -24,16 +24,16 @@ export function createStoreAccessor(store: Store) {
    * @returns 返回值和 setter 函数
    */
   function useStoreAtom<Value, Args extends any[], Result>(
-    atom: WritableAtom<Value, Args, Result>,
+    atom: WritableAtom<Value, Args, Result>
   ): [Awaited<Value>, SetAtom<Args, Result>]
   function useStoreAtom<AtomType extends WritableAtom<any, any[], any>>(
-    atom: AtomType,
+    atom: AtomType
   ): [
     Awaited<ExtractAtomValue<AtomType>>,
-    SetAtom<ExtractAtomArgs<AtomType>, ExtractAtomResult<AtomType>>,
+    SetAtom<ExtractAtomArgs<AtomType>, ExtractAtomResult<AtomType>>
   ]
   function useStoreAtom<AtomType extends Atom<any>>(
-    atom: AtomType,
+    atom: AtomType
   ): [Awaited<ExtractAtomValue<AtomType>>, never]
   function useStoreAtom<Value>(atom: Atom<Value>) {
     return useAtom(atom)
@@ -45,7 +45,7 @@ export function createStoreAccessor(store: Store) {
    * @returns 返回 atom 的当前值
    */
   function useStoreAtomValue<AtomType extends Atom<any>>(
-    atom: AtomType,
+    atom: AtomType
   ): Awaited<ExtractAtomValue<AtomType>>
   function useStoreAtomValue<Value>(atom: Atom<Value>) {
     return useAtomValue(atom, { store })
@@ -57,10 +57,10 @@ export function createStoreAccessor(store: Store) {
    * @returns 返回设置 atom 的函数
    */
   function useSetStoreAtom<AtomType extends WritableAtom<any, any[], any>>(
-    atom: AtomType,
+    atom: AtomType
   ): SetAtom<ExtractAtomArgs<AtomType>, ExtractAtomResult<AtomType>>
   function useSetStoreAtom<Value, Args extends any[], Result>(
-    atom: WritableAtom<Value, Args, Result>,
+    atom: WritableAtom<Value, Args, Result>
   ) {
     return useSetAtom(atom, { store })
   }
@@ -82,6 +82,6 @@ export function createStoreAccessor(store: Store) {
     useStoreAtomValue,
     useSetStoreAtom,
     useStoreAtom,
-    setStoreAtom,
+    setStoreAtom
   ] as const
 }

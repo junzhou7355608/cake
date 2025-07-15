@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro'
 const windowInfo = Taro.getWindowInfo()
 const menuRect = Taro.getMenuButtonBoundingClientRect() || {
   top: 0,
-  height: 32,
+  height: 32
 }
 
 const statusBarHeight = windowInfo.statusBarHeight || 0
@@ -19,28 +19,28 @@ const navigatorBottom = 0
 const ui = {
   safeArea: {
     top: () => safeAreaTop,
-    bottom: () => screenHeight - safeAreaBottom,
+    bottom: () => screenHeight - safeAreaBottom
   },
   statusBar: {
-    height: () => statusBarHeight,
+    height: () => statusBarHeight
   },
   navigator: {
     height: () => navigatorHeight,
-    bottom: () => navigatorBottom,
+    bottom: () => navigatorBottom
   },
   tabBar: {
-    height: () => tabBarHeight,
+    height: () => tabBarHeight
   },
   page: {
     top: () => statusBarHeight + navigatorHeight + navigatorBottom,
-    bottom: () => screenHeight - safeAreaBottom + tabBarHeight,
+    bottom: () => screenHeight - safeAreaBottom + tabBarHeight
   },
   theme: {
     color: {
       primary: '#876660',
-      background: '#a48075',
-    },
-  },
+      background: '#a48075'
+    }
+  }
 }
 
 export { ui }

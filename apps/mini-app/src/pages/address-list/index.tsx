@@ -11,7 +11,7 @@ import styles from './index.module.scss'
 export default function AddressList() {
   const onAddAddress = useMemoizedFn(() => {
     Taro.navigateTo({
-      url: '/pages/address-add/index',
+      url: '/pages/address-add/index'
     })
   })
 

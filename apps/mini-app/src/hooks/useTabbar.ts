@@ -17,7 +17,7 @@ export function useTabbarInit() {
       setStore(
         produce((draft) => {
           draft.tab = match[1] as TabBarKey
-        }),
+        })
       )
     }
   })
@@ -34,12 +34,12 @@ export function useTabbar() {
     setStore(
       produce((draft) => {
         draft.tab = key
-      }),
+      })
     )
     Taro.switchTab({ url: `/pages/${key}/index` })
   })
 
   return {
-    onSwitchTab,
+    onSwitchTab
   }
 }

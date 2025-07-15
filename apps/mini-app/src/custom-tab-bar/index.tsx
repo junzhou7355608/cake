@@ -23,7 +23,7 @@ export default function CustomTabBar() {
     setStore(
       produce((draft) => {
         draft.tab = tab as TabBarKey
-      }),
+      })
     )
 
     const path = TabBarPathMap.get(tab as TabBarKey)
@@ -37,13 +37,13 @@ export default function CustomTabBar() {
     <View
       className={styles.tabBar}
       style={{
-        paddingBottom: ui.safeArea.bottom(),
+        paddingBottom: ui.safeArea.bottom()
       }}
     >
       <View
         className={styles.content}
         style={{
-          height: `${ui.tabBar.height()}px`,
+          height: `${ui.tabBar.height()}px`
         }}
       >
         {tabs.map((item) => {
@@ -55,7 +55,7 @@ export default function CustomTabBar() {
             >
               <View
                 className={classNames(styles.icon, {
-                  [styles.active]: store.tab === item,
+                  [styles.active]: store.tab === item
                 })}
               >
                 <IconFont
@@ -66,7 +66,7 @@ export default function CustomTabBar() {
 
               <View
                 className={classNames(styles.text, {
-                  [styles.active]: store.tab === item,
+                  [styles.active]: store.tab === item
                 })}
               >
                 {TabBarMap.get(item)}

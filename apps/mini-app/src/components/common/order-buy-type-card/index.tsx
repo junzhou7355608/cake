@@ -25,13 +25,13 @@ export default function OrderBuyTypeCard() {
           <View
             key={item}
             className={classNames(styles.item, {
-              [styles.active]: store.buyType === item,
+              [styles.active]: store.buyType === item
             })}
             onClick={() => {
               setStore(
                 produce((draft) => {
                   draft.buyType = item
-                }),
+                })
               )
             }}
           >
@@ -41,7 +41,7 @@ export default function OrderBuyTypeCard() {
 
         <View
           className={classNames(styles.line, {
-            [styles.active]: store.buyType === BuyType.Delivery,
+            [styles.active]: store.buyType === BuyType.Delivery
           })}
         >
           <View className={classNames(styles.icon, styles.left)}>
@@ -55,7 +55,7 @@ export default function OrderBuyTypeCard() {
       <View className={styles.tabBg}></View>
       <Card
         className={classNames(styles.card, {
-          [styles.active]: store.buyType === BuyType.Delivery,
+          [styles.active]: store.buyType === BuyType.Delivery
         })}
       >
         <View className={styles.title}>

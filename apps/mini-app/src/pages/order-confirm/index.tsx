@@ -15,7 +15,7 @@ import styles from './index.module.scss'
 export default function OrderConfirm() {
   const onPay = useMemoizedFn(() => {
     Taro.navigateTo({
-      url: '/pages/pay-success/index',
+      url: '/pages/pay-success/index'
     })
   })
 

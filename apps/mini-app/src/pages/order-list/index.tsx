@@ -12,7 +12,7 @@ import styles from './index.module.scss'
 export default function OrderList() {
   const onViewOrderHistory = useMemoizedFn(() => {
     Taro.navigateTo({
-      url: '/pages/order-history/index',
+      url: '/pages/order-history/index'
     })
   })
   return (

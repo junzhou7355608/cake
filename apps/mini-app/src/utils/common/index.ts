@@ -2,7 +2,7 @@ export function getDistanceFromLatLonInKm(
   currentLat: number,
   currentLon: number,
   targetLat: number,
-  targetLon: number,
+  targetLon: number
 ) {
   const R = 6371
   const dLat = deg2rad(targetLat - currentLat)
@@ -24,6 +24,6 @@ export function deg2rad(deg: number) {
 
 export function createNumberList(num: number) {
   return Array.from({ length: num }, (_, index) =>
-    index.toString().padStart(2, '0'),
+    index.toString().padStart(2, '0')
   )
 }

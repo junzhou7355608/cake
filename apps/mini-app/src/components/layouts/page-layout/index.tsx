@@ -28,7 +28,7 @@ export default function PageLayout(props: PropsWithChildren<PageLayoutProps>) {
           '--page-top': `${ui.page.top()}px`,
           '--page-bottom': `${ui.page.bottom()}px`,
           '--theme-color': `${ui.theme.color.primary}`,
-          '--theme-background': `${ui.theme.color.background}`,
+          '--theme-background': `${ui.theme.color.background}`
         } as React.CSSProperties
       }
     >

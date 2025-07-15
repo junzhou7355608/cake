@@ -10,5 +10,5 @@ export const [
   useGlobalStoreAtomValue,
   useSetGlobalStoreAtom,
   useGlobalStoreAtom,
-  setGlobalStoreAtom,
+  setGlobalStoreAtom
 ] = createStoreAccessor(globalStore)

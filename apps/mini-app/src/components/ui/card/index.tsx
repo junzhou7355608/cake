@@ -17,7 +17,7 @@ export default function Card(props: PropsWithChildren<CardProps>) {
         styles.card,
         styles[size],
         { [styles.hasActive]: !!restProps.onClick },
-        className,
+        className
       )}
       {...restProps}
     >

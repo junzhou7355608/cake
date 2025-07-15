@@ -10,13 +10,13 @@ import styles from './index.module.scss'
 export default function PaySuccess() {
   const onBackHome = useMemoizedFn(() => {
     Taro.switchTab({
-      url: '/pages/home/index',
+      url: '/pages/home/index'
     })
   })
 
   const onViewOrder = useMemoizedFn(() => {
     Taro.navigateTo({
-      url: '/pages/order-list/index',
+      url: '/pages/order-list/index'
     })
   })
 

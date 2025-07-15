@@ -15,12 +15,12 @@ export default function CategoryShop() {
     return [
       {
         label: '自提',
-        value: BuyType.Pickup,
+        value: BuyType.Pickup
       },
       {
         label: '外送',
-        value: BuyType.Delivery,
-      },
+        value: BuyType.Delivery
+      }
     ]
   }, [])
 
@@ -28,7 +28,7 @@ export default function CategoryShop() {
     setStore(
       produce(store, (draft) => {
         draft.buyType = val
-      }),
+      })
     )
   })
 
@@ -44,7 +44,7 @@ export default function CategoryShop() {
             <View
               key={item.value}
               className={classNames(styles.item, {
-                [styles.active]: store.buyType === item.value,
+                [styles.active]: store.buyType === item.value
               })}
               onClick={() => onSwitchBuyType(item.value)}
             >
@@ -55,7 +55,7 @@ export default function CategoryShop() {
             className={classNames(styles.activeBg)}
             style={{
               width: `${100 / items.length}%`,
-              left: `${(items.findIndex((item) => item.value === store.buyType) / items.length) * 100}%`,
+              left: `${(items.findIndex((item) => item.value === store.buyType) / items.length) * 100}%`
             }}
           ></View>
         </View>

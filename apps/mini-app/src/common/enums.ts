@@ -1,19 +1,19 @@
 export enum StorageKey {
-  Token = 'token',
+  Token = 'token'
 }
 
 export enum EmitKey {
-  LoginInvalid = 'login_invalid',
+  LoginInvalid = 'login_invalid'
 }
 
 export enum TabBarKey {
   Home = 'home',
   Category = 'category',
   Cart = 'cart',
-  Mine = 'mine',
+  Mine = 'mine'
 }
 
 export enum BuyType {
   Pickup = 'pickup',
-  Delivery = 'delivery',
+  Delivery = 'delivery'
 }

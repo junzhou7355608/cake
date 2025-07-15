@@ -17,37 +17,37 @@ export default function MineServices() {
       text: '订单中心',
       onClick: () => {
         Taro.navigateTo({
-          url: '/pages/order-list/index',
+          url: '/pages/order-list/index'
         })
-      },
+      }
     },
     {
       icon: 'dizhibu',
       text: '收货地址',
       onClick: () => {
         Taro.navigateTo({
-          url: '/pages/address-list/index',
+          url: '/pages/address-list/index'
         })
-      },
+      }
     },
     {
       icon: 'ziliao',
       text: '个人信息',
       onClick: () => {
         Taro.navigateTo({
-          url: '/pages/mine-info/index',
+          url: '/pages/mine-info/index'
         })
-      },
+      }
     },
     {
       icon: 'shezhi',
       text: '系统设置',
       onClick: () => {
         Taro.navigateTo({
-          url: '/pages/system-setting/index',
+          url: '/pages/system-setting/index'
         })
-      },
-    },
+      }
+    }
   ]
 
   return (

@@ -20,7 +20,7 @@ export function QuantityInput(props: QuantityInputProps) {
     value,
     defaultValue,
     finalValue: min,
-    onChange,
+    onChange
   })
 
   const handleDecrease = useMemoizedFn(() => {

@@ -18,7 +18,7 @@ export default function Price(props: PriceProps) {
         styles.price,
         styles[size],
         { [styles.primary]: primary },
-        className,
+        className
       )}
     >
       <Text className={styles.prefix}>¥</Text>

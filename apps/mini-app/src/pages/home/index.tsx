@@ -26,7 +26,7 @@ export default function Mine() {
     Taro.cloud
       .callFunction({
         name: 'login',
-        data: {},
+        data: {}
       })
       .then((res) => {
         console.log('云函数返回: ', res)

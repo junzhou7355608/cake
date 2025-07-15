@@ -5,21 +5,21 @@ import cloud, { ICloud } from 'wx-server-sdk'
 
 interface LoginEvent {
   // 根据实际需要补充字段
-  [key: string]: unknown;
+  [key: string]: unknown
 }
 
 interface LoginResult {
-  event: LoginEvent;
-  openid?: string;
-  appid?: string;
-  unionid?: string;
-  env?: string;
+  event: LoginEvent
+  openid?: string
+  appid?: string
+  unionid?: string
+  env?: string
 }
 
 // 初始化 cloud
 cloud.init({
   // API 调用都保持和云函数当前所在环境一致
-  env: cloud.DYNAMIC_CURRENT_ENV as unknown as string,
+  env: cloud.DYNAMIC_CURRENT_ENV as unknown as string
 })
 
 /**
@@ -28,7 +28,10 @@ cloud.init({
  * event 参数包含小程序端调用传入的 data
  *
  */
-export async function main(event: LoginEvent, context: ICloud.WXContext): Promise<LoginResult> {
+export async function main(
+  event: LoginEvent,
+  context: ICloud.WXContext
+): Promise<LoginResult> {
   console.log(event)
   console.log(context)
 
@@ -43,6 +46,6 @@ export async function main(event: LoginEvent, context: ICloud.WXContext): Promis
     openid: wxContext.OPENID,
     appid: wxContext.APPID,
     unionid: wxContext.UNIONID,
-    env: wxContext.ENV,
+    env: wxContext.ENV
   }
 }

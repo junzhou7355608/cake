@@ -46,7 +46,7 @@ export default function Popup(props: PropsWithChildren<PopupProps>) {
       <View
         className={classNames(
           styles.mask,
-          innerVisible ? styles.maskShow : styles.maskHide,
+          innerVisible ? styles.maskShow : styles.maskHide
         )}
         onClick={onClose}
       />
@@ -54,7 +54,7 @@ export default function Popup(props: PropsWithChildren<PopupProps>) {
         ref={contentRef}
         className={classNames(
           styles.popupContentBase,
-          innerVisible ? styles.popupContentShow : styles.popupContentHide,
+          innerVisible ? styles.popupContentShow : styles.popupContentHide
         )}
         onTransitionEnd={handleTransitionEnd}
       >

@@ -2,7 +2,7 @@
 import token from './token'
 
 const storage = {
-  token,
+  token
   // language,
 }
 

@@ -22,8 +22,8 @@ export default function Tab(props: TabProps) {
   const [current, setCurrent] = useUncontrolled({
     value,
     defaultValue,
-    finalValue: items[0].value,
-    onChange,
+    finalValue: items?.[0]?.value,
+    onChange
   })
 
   return (
@@ -32,7 +32,7 @@ export default function Tab(props: TabProps) {
         <View
           key={item.value}
           className={classNames(styles.item, {
-            [styles.active]: current === item.value,
+            [styles.active]: current === item.value
           })}
           onClick={() => setCurrent(item.value)}
         >

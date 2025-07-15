@@ -9,11 +9,11 @@ interface UseUncontrolledInput<T> {
 }
 
 export function useUncontrolled<T>(
-  params: UseUncontrolledInput<T>,
+  params: UseUncontrolledInput<T>
 ): [T, (value: T, ...payload: any[]) => void, boolean] {
   const { value, defaultValue, finalValue, onChange = () => {} } = params
   const [uncontrolledValue, setUncontrolledValue] = useState(
-    defaultValue !== undefined ? defaultValue : finalValue,
+    defaultValue !== undefined ? defaultValue : finalValue
   )
 
   const handleUncontrolledChange = (val: T, ...payload: any[]) => {

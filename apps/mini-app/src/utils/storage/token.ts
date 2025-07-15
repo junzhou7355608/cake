@@ -28,7 +28,7 @@ async function remove() {
 const token = {
   get,
   set,
-  remove,
+  remove
 }
 
 export { token as default, get, remove, set }

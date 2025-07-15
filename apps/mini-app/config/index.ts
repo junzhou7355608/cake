@@ -1,3 +1,4 @@
+/* eslint-disable turbo/no-undeclared-env-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { defineConfig, type UserConfigExport } from '@tarojs/cli'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
@@ -19,13 +20,10 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
     sourceRoot: 'src',
     outputRoot: 'dist',
     plugins: [],
-    defineConstants: {
-    },
+    defineConstants: {},
     copy: {
-      patterns: [
-      ],
-      options: {
-      }
+      patterns: [],
+      options: {}
     },
     framework: 'react',
     compiler: 'webpack5',
@@ -34,13 +32,13 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
     },
     mini: {
       miniCssExtractPluginOption: {
-        ignoreOrder: true,
+        ignoreOrder: true
       },
       postcss: {
         pxtransform: {
           enable: true,
           config: {
-            minPixelValue: 2,
+            minPixelValue: 2
           }
         },
         cssModules: {
@@ -88,7 +86,7 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
       appName: 'taroDemo',
       postcss: {
         cssModules: {
-          enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+          enable: false // 默认为 false，如需使用 css modules 功能，则设为 true
         }
       }
     }

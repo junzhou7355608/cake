@@ -10,5 +10,5 @@ export interface AppStore {
 export const appAtom = atom<AppStore>({
   token: '',
   tab: TabBarKey.Home,
-  buyType: BuyType.Pickup,
+  buyType: BuyType.Pickup
 })

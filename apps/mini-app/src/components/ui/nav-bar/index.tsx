@@ -45,7 +45,7 @@ export default function NavBar(props: NavBarProps) {
       <View
         className={styles.fixedBg}
         style={{
-          opacity,
+          opacity
         }}
       ></View>
       <View className={styles.static}></View>

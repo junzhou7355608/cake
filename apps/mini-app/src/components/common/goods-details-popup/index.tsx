@@ -17,7 +17,7 @@ function GoodsDetailsPopup(props: GoodsDetailsPopupProps) {
 
   const onCreateOrder = useMemoizedFn(() => {
     Taro.navigateTo({
-      url: '/pages/order-confirm/index',
+      url: '/pages/order-confirm/index'
     })
     onClose?.()
   })

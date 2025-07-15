@@ -10,7 +10,7 @@ export type AddressItemCardProps = object
 export default function AddressItemCard() {
   const onEditAddress = useMemoizedFn(() => {
     Taro.navigateTo({
-      url: '/pages/address-edit/index',
+      url: '/pages/address-edit/index'
     })
   })
 

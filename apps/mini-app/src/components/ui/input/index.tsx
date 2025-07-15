@@ -1,7 +1,7 @@
 import {
   Input as TaroInput,
   type InputProps as TaroInputProps,
-  View,
+  View
 } from '@tarojs/components'
 import classNames from 'classnames'
 import styles from './index.module.scss'

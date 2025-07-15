@@ -17,7 +17,7 @@ export default function Cell(props: CellProps) {
       className={classNames(
         styles.cell,
         { [styles.hasActive]: !!restProps.onClick },
-        className,
+        className
       )}
       {...restProps}
     >

@@ -25,7 +25,7 @@ export default function Banner(props: BannerProps) {
       <View
         className={classNames(styles.navBar)}
         style={{
-          opacity,
+          opacity
         }}
       >
         <View className={styles.navBarTitle}>分类</View>

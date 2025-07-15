@@ -6,7 +6,7 @@ export default function SafeAreaTop() {
   return (
     <View
       style={{
-        height: ui.safeArea.top(),
+        height: ui.safeArea.top()
       }}
     ></View>
   )

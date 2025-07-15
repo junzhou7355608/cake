@@ -17,32 +17,32 @@ export default defineAppConfig({
     'pages/mine-info/index',
     'pages/system-setting/index',
     'pages/address-add/index',
-    'pages/address-edit/index',
+    'pages/address-edit/index'
   ],
   window: {
     backgroundTextStyle: 'light',
     navigationStyle: 'custom',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#ffffff'
   },
   tabBar: {
     list: [
       {
         pagePath: 'pages/home/index',
-        text: '首页',
+        text: '首页'
       },
       {
         pagePath: 'pages/category/index',
-        text: '分类',
+        text: '分类'
       },
       {
         pagePath: 'pages/cart/index',
-        text: '购物车',
+        text: '购物车'
       },
       {
         pagePath: 'pages/mine/index',
-        text: '我的',
-      },
+        text: '我的'
+      }
     ],
-    custom: true,
-  },
+    custom: true
+  }
 })

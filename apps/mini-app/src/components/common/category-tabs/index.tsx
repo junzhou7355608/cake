@@ -10,23 +10,23 @@ export default function CategoryTabs() {
   const tabs = useMemo(() => {
     return [
       {
-        name: '小蛋糕',
+        name: '小蛋糕'
       },
       {
-        name: '大蛋糕',
+        name: '大蛋糕'
       },
       {
-        name: '饮品',
+        name: '饮品'
       },
       {
-        name: '面包',
+        name: '面包'
       },
       {
-        name: '零食',
+        name: '零食'
       },
       {
-        name: '其他',
-      },
+        name: '其他'
+      }
     ]
   }, [])
 
@@ -35,7 +35,7 @@ export default function CategoryTabs() {
       {tabs.map((item, index) => (
         <View
           className={classNames(styles.item, {
-            [styles.active]: tab === index,
+            [styles.active]: tab === index
           })}
           key={item.name}
           onClick={() => setTab(index)}

@@ -19,7 +19,7 @@ export default function HomeBanner() {
       <View
         className={classNames(styles.navBar)}
         style={{
-          opacity,
+          opacity
         }}
       >
         <View className={styles.content}>盈盈甜品屋</View>

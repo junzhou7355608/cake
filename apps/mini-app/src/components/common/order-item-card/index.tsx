@@ -13,7 +13,7 @@ export type OrderItemCardProps = object
 export default function OrderItemCard() {
   const onViewOrder = useMemoizedFn(() => {
     Taro.navigateTo({
-      url: '/pages/order-detail/index',
+      url: '/pages/order-detail/index'
     })
   })
 
