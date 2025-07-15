@@ -1,4 +1,8 @@
-import { Input as TaroInput, type InputProps as TaroInputProps, View } from '@tarojs/components'
+import {
+  Input as TaroInput,
+  type InputProps as TaroInputProps,
+  View,
+} from '@tarojs/components'
 import classNames from 'classnames'
 import styles from './index.module.scss'
 
@@ -15,8 +19,7 @@ export default function Input(props: InputProps) {
       <TaroInput
         className={classNames(styles.input, className)}
         {...restProps}
-      >
-      </TaroInput>
+      ></TaroInput>
     </View>
   )
 }

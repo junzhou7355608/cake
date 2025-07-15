@@ -10,9 +10,7 @@ import Taro from '@tarojs/taro'
 import { useMemoizedFn } from 'ahooks'
 import styles from './index.module.scss'
 
-export interface GoodsDetailsPopupProps extends PopupProps {
-
-}
+export type GoodsDetailsPopupProps = PopupProps
 
 function GoodsDetailsPopup(props: GoodsDetailsPopupProps) {
   const { visible, onClose } = props
@@ -33,14 +31,24 @@ function GoodsDetailsPopup(props: GoodsDetailsPopupProps) {
         <Image className={styles.image} mode="aspectFill" src={goods}></Image>
         <View className={styles.content}>
           <View className={styles.title}>焙茶杏干乳酪卷</View>
-          <View className={styles.subTitle}>茶香控狂喜！#焙茶杏干乳酪卷 焙茶的醇厚微苦 杏干的酸甜软糯乳酪的丝滑绵密 一口下去层次拉满！</View>
+          <View className={styles.subTitle}>
+            茶香控狂喜！#焙茶杏干乳酪卷 焙茶的醇厚微苦
+            杏干的酸甜软糯乳酪的丝滑绵密 一口下去层次拉满！
+          </View>
 
           <View className={styles.price}>
             <Price value={128} />
             <QuantityInput />
           </View>
 
-          <Button type="primary" size="lg" className={styles.button} onClick={onCreateOrder}>立即购买</Button>
+          <Button
+            type="primary"
+            size="lg"
+            className={styles.button}
+            onClick={onCreateOrder}
+          >
+            立即购买
+          </Button>
         </View>
       </View>
     </Popup>

@@ -14,8 +14,6 @@ import { useEffect } from 'react'
 export default function Mine() {
   const { onSwitchTab } = useTabbar()
 
-
-
   const onBuy = useMemoizedFn(() => {
     onSwitchTab(TabBarKey.Category)
   })
@@ -24,15 +22,14 @@ export default function Mine() {
     getLogin()
   }, [])
 
-
   const getLogin = () => {
     Taro.cloud
       .callFunction({
-        name: "login",
-        data: {}
+        name: 'login',
+        data: {},
       })
-      .then(res => {
-        console.log("云函数返回: ", res)
+      .then((res) => {
+        console.log('云函数返回: ', res)
       })
   }
 
@@ -43,7 +40,6 @@ export default function Mine() {
         <HomeCard title="门店自提" icon={cat1} onClick={onBuy}></HomeCard>
         <HomeCard title="外卖配送" icon={cat2} onClick={onBuy}></HomeCard>
       </View>
-
     </PageLayout>
   )
 }

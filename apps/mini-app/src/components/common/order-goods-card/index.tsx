@@ -5,9 +5,7 @@ import { Image, View } from '@tarojs/components'
 
 import styles from './index.module.scss'
 
-export interface OrderGoodsCardProps {
-
-}
+export type OrderGoodsCardProps = object
 
 export default function OrderGoodsCard() {
   return (

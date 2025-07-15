@@ -1,4 +1,7 @@
-import { Button as TaroButton, type ButtonProps as TaroButtonProps } from '@tarojs/components'
+import {
+  Button as TaroButton,
+  type ButtonProps as TaroButtonProps,
+} from '@tarojs/components'
 import classNames from 'classnames'
 import styles from './index.module.scss'
 
@@ -12,9 +15,13 @@ export default function Button(props: ButtonProps) {
 
   return (
     <TaroButton
-      className={classNames(styles.button, styles[type], styles[size], className)}
+      className={classNames(
+        styles.button,
+        styles[type],
+        styles[size],
+        className,
+      )}
       {...restProps}
-    >
-    </TaroButton>
+    ></TaroButton>
   )
 }

@@ -68,20 +68,16 @@
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.0",
     "@types/webpack-env": "^1.13.6",
-    "@typescript-eslint/eslint-plugin": "^6.2.0",
-    "@typescript-eslint/parser": "^6.2.0",
     "babel-preset-taro": "4.1.4",
-    "eslint": "^8.12.0",
-    "eslint-config-taro": "4.1.4",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-react": "^7.8.2",
-    "eslint-plugin-react-hooks": "^4.2.0",
     "postcss": "^8.4.18",
     "react-refresh": "^0.11.0",
     "stylelint": "9.3.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths-webpack-plugin": "^4.2.0",
     "typescript": "^5.1.0",
-    "webpack": "^5.78.0"
+    "webpack": "^5.78.0",
+    "eslint": "^9.30.0",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*"
   }
 }

@@ -24,7 +24,9 @@ export default function AddressList() {
         <AddressItemCard />
       </View>
       <ActionBar>
-        <Button size="lg" type="primary" onClick={onAddAddress}>新增地址</Button>
+        <Button size="lg" type="primary" onClick={onAddAddress}>
+          新增地址
+        </Button>
       </ActionBar>
     </PageLayout>
   )

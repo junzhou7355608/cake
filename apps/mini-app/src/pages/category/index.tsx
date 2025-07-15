@@ -17,11 +17,11 @@ export default function Category() {
       <CategoryShop></CategoryShop>
       <View className={styles.content}>
         <CategoryTabs></CategoryTabs>
-        <CategoryGoods onGoodsDetails={() => {
-          setVisible(true)
-        }}
-        >
-        </CategoryGoods>
+        <CategoryGoods
+          onGoodsDetails={() => {
+            setVisible(true)
+          }}
+        ></CategoryGoods>
       </View>
       <GoodsDetailsPopup visible={visible} onClose={() => setVisible(false)} />
     </PageLayout>

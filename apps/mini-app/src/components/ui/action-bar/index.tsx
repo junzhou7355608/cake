@@ -11,9 +11,7 @@ export default function ActionBar(props: PropsWithChildren<ActionBarProps>) {
   const { className, children } = props
 
   return (
-    <View
-      className={styles.actionBar}
-    >
+    <View className={styles.actionBar}>
       <View className={styles.fixed}>
         <View className={classNames(styles.content, className)}>
           {children}

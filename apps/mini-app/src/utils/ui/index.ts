@@ -1,7 +1,10 @@
 import Taro from '@tarojs/taro'
 
 const windowInfo = Taro.getWindowInfo()
-const menuRect = Taro.getMenuButtonBoundingClientRect() || { top: 0, height: 32 }
+const menuRect = Taro.getMenuButtonBoundingClientRect() || {
+  top: 0,
+  height: 32,
+}
 
 const statusBarHeight = windowInfo.statusBarHeight || 0
 const safeAreaTop = windowInfo.safeArea?.top || 0
@@ -30,7 +33,7 @@ const ui = {
   },
   page: {
     top: () => statusBarHeight + navigatorHeight + navigatorBottom,
-    bottom: () => (screenHeight - safeAreaBottom) + tabBarHeight,
+    bottom: () => screenHeight - safeAreaBottom + tabBarHeight,
   },
   theme: {
     color: {

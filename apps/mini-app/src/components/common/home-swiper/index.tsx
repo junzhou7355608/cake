@@ -3,7 +3,7 @@ import type { ITouchEvent } from '@tarojs/components'
 // import banner2 from '@/assets/backup/WechatIMG581.jpg'
 // import banner3 from '@/assets/backup/WechatIMG690.jpg'
 import Card from '@/components/ui/card'
-import { Image, Swiper, SwiperItem, View } from '@tarojs/components'
+import { Swiper, SwiperItem } from '@tarojs/components'
 import styles from './index.module.scss'
 
 export interface HomeSwiperProps {

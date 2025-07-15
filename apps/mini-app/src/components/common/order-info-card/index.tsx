@@ -1,9 +1,7 @@
 import Card from '@/components/ui/card'
 import Cell from '@/components/ui/cell'
 
-export interface OrderInfoCardProps {
-
-}
+export type OrderInfoCardProps = object
 
 export default function OrderInfoCard() {
   return (

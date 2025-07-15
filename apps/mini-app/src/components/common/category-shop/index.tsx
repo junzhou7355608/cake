@@ -11,7 +11,7 @@ import styles from './index.module.scss'
 export default function CategoryShop() {
   const [store, setStore] = useGlobalStoreAtom(appAtom)
 
-  const items: { label: string, value: BuyType }[] = useMemo(() => {
+  const items: { label: string; value: BuyType }[] = useMemo(() => {
     return [
       {
         label: '自提',
@@ -25,9 +25,11 @@ export default function CategoryShop() {
   }, [])
 
   const onSwitchBuyType = useMemoizedFn((val: BuyType) => {
-    setStore(produce(store, (draft) => {
-      draft.buyType = val
-    }))
+    setStore(
+      produce(store, (draft) => {
+        draft.buyType = val
+      }),
+    )
   })
 
   return (
@@ -38,27 +40,24 @@ export default function CategoryShop() {
       </View>
       <View className={styles.segmented}>
         <View className={styles.items}>
-          {
-            items.map(item => (
-              <View
-                key={item.value}
-                className={classNames(styles.item, {
-                  [styles.active]: store.buyType === item.value,
-                })}
-                onClick={() => onSwitchBuyType(item.value)}
-              >
-                {item.label}
-              </View>
-            ))
-          }
+          {items.map((item) => (
+            <View
+              key={item.value}
+              className={classNames(styles.item, {
+                [styles.active]: store.buyType === item.value,
+              })}
+              onClick={() => onSwitchBuyType(item.value)}
+            >
+              {item.label}
+            </View>
+          ))}
           <View
             className={classNames(styles.activeBg)}
             style={{
               width: `${100 / items.length}%`,
-              left: `${(items.findIndex(item => item.value === store.buyType) / items.length) * 100}%`,
+              left: `${(items.findIndex((item) => item.value === store.buyType) / items.length) * 100}%`,
             }}
-          >
-          </View>
+          ></View>
         </View>
       </View>
     </View>

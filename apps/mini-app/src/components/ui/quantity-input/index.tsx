@@ -44,12 +44,9 @@ export function QuantityInput(props: QuantityInputProps) {
 
   const handleBlur = useMemoizedFn(() => {
     let newVal = count
-    if (count < min)
-      newVal = min
-    if (count > max)
-      newVal = max
-    if (newVal !== count)
-      setCount(newVal)
+    if (count < min) newVal = min
+    if (count > max) newVal = max
+    if (newVal !== count) setCount(newVal)
   })
 
   return (

@@ -14,17 +14,15 @@ export default function Cell(props: CellProps) {
 
   return (
     <View
-      className={classNames(styles.cell, { [styles.hasActive]: !!restProps.onClick }, className)}
+      className={classNames(
+        styles.cell,
+        { [styles.hasActive]: !!restProps.onClick },
+        className,
+      )}
       {...restProps}
     >
-      <View className={styles.label}>
-        {label}
-      </View>
-      {action || (
-        <View className={styles.value}>
-          {value}
-        </View>
-      )}
+      <View className={styles.label}>{label}</View>
+      {action || <View className={styles.value}>{value}</View>}
     </View>
   )
 }

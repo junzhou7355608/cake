@@ -48,21 +48,29 @@ export default function CustomTabBar() {
       >
         {tabs.map((item) => {
           return (
-            <View key={item} className={styles.item} onClick={() => onChange(item)}>
-              <View className={classNames(styles.icon, {
-                [styles.active]: store.tab === item,
-              })}
+            <View
+              key={item}
+              className={styles.item}
+              onClick={() => onChange(item)}
+            >
+              <View
+                className={classNames(styles.icon, {
+                  [styles.active]: store.tab === item,
+                })}
               >
-                <IconFont name={TabBarIconMap.get(item) as IconNames} size={32}></IconFont>
+                <IconFont
+                  name={TabBarIconMap.get(item) as IconNames}
+                  size={32}
+                ></IconFont>
               </View>
 
-              <View className={classNames(styles.text, {
-                [styles.active]: store.tab === item,
-              })}
+              <View
+                className={classNames(styles.text, {
+                  [styles.active]: store.tab === item,
+                })}
               >
                 {TabBarMap.get(item)}
               </View>
-
             </View>
           )
         })}

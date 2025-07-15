@@ -14,7 +14,10 @@ export default function SystemSetting() {
       <NavBar title="系统设置" />
       <View className={styles.content}>
         <Card>
-          <Cell label="关于我们" action={<IconFont name="arrow-right" size={22} color="#222" />} />
+          <Cell
+            label="关于我们"
+            action={<IconFont name="arrow-right" size={22} color="#222" />}
+          />
         </Card>
       </View>
       <ActionBar>

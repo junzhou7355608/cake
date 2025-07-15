@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react'
-import { View } from '@tarojs/components'
+import { View, ViewProps } from '@tarojs/components'
 import { useMemoizedFn } from 'ahooks'
 import classNames from 'classnames'
 import { useEffect, useRef, useState } from 'react'
@@ -17,7 +17,7 @@ export default function Popup(props: PropsWithChildren<PopupProps>) {
 
   const [innerVisible, setInnerVisible] = useState(visible)
 
-  const contentRef = useRef<any>(null)
+  const contentRef = useRef<ViewProps>(null)
 
   useEffect(() => {
     if (visible) {
@@ -26,8 +26,7 @@ export default function Popup(props: PropsWithChildren<PopupProps>) {
       setTimeout(() => {
         setInnerVisible(true)
       }, 16)
-    }
-    else {
+    } else {
       setInnerVisible(false)
     }
   }, [visible])
@@ -44,10 +43,19 @@ export default function Popup(props: PropsWithChildren<PopupProps>) {
       style={{ display: show ? 'block' : 'none' }}
       catchMove
     >
-      <View className={classNames(styles.mask, innerVisible ? styles.maskShow : styles.maskHide)} onClick={onClose} />
+      <View
+        className={classNames(
+          styles.mask,
+          innerVisible ? styles.maskShow : styles.maskHide,
+        )}
+        onClick={onClose}
+      />
       <View
         ref={contentRef}
-        className={classNames(styles.popupContentBase, innerVisible ? styles.popupContentShow : styles.popupContentHide)}
+        className={classNames(
+          styles.popupContentBase,
+          innerVisible ? styles.popupContentShow : styles.popupContentHide,
+        )}
         onTransitionEnd={handleTransitionEnd}
       >
         {children}

@@ -23,7 +23,10 @@ export default function OrderList() {
         <OrderItemCard></OrderItemCard>
         <OrderItemCard></OrderItemCard>
         <Card size="md" onClick={onViewOrderHistory}>
-          <Cell label="历史订单" action={<IconFont name="arrow-right" size={22} color="#222" />}></Cell>
+          <Cell
+            label="历史订单"
+            action={<IconFont name="arrow-right" size={22} color="#222" />}
+          ></Cell>
         </Card>
         <View style={{ height: '50vh' }}></View>
       </View>

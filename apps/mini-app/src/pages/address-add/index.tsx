@@ -28,7 +28,9 @@ export default function AddressAdd() {
         </Card>
       </View>
       <ActionBar>
-        <Button size="lg" type="primary" onClick={onSaveAddress}>保存</Button>
+        <Button size="lg" type="primary" onClick={onSaveAddress}>
+          保存
+        </Button>
       </ActionBar>
     </PageLayout>
   )

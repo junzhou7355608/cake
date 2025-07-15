@@ -27,6 +27,18 @@ export const config = [
     },
   },
   {
-    ignores: ["dist/**"],
+    ignores: ["dist/**", "**/iconfont/**"],
   },
+  {
+    rules: {
+      '@typescript-eslint/no-unused-vars': ['error', {
+				'vars': 'all',
+				'args': 'after-used',
+				'ignoreRestSiblings': true,
+				'argsIgnorePattern': '^_',
+				'varsIgnorePattern': '^_'
+			}],
+			'no-unused-vars': 'off'
+    }
+  }
 ];

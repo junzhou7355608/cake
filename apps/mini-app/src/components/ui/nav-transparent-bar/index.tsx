@@ -29,7 +29,6 @@ export default function NavTransparentBar(props: NavTransparentBarProps) {
       fixed={fixed}
       leftText="返回"
       leftArrow
-    >
-    </NavBar>
+    ></NavBar>
   )
 }

@@ -2,9 +2,7 @@ import Card from '@/components/ui/card'
 import { View } from '@tarojs/components'
 import styles from './index.module.scss'
 
-export interface OrderStatusCardProps {
-
-}
+export type OrderStatusCardProps = object
 
 export default function OrderStatusCard() {
   return (

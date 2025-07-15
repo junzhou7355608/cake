@@ -6,4 +6,9 @@ import { getDefaultStore } from 'jotai'
  */
 export const globalStore = getDefaultStore()
 
-export const [useGlobalStoreAtomValue, useSetGlobalStoreAtom, useGlobalStoreAtom, setGlobalStoreAtom] = createStoreAccessor(globalStore)
+export const [
+  useGlobalStoreAtomValue,
+  useSetGlobalStoreAtom,
+  useGlobalStoreAtom,
+  setGlobalStoreAtom,
+] = createStoreAccessor(globalStore)

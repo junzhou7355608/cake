@@ -27,13 +27,13 @@ export default function Tab(props: TabProps) {
   })
 
   return (
-    <View
-      className={classNames(styles.tab, className)}
-    >
-      {items.map(item => (
+    <View className={classNames(styles.tab, className)}>
+      {items.map((item) => (
         <View
           key={item.value}
-          className={classNames(styles.item, { [styles.active]: current === item.value })}
+          className={classNames(styles.item, {
+            [styles.active]: current === item.value,
+          })}
           onClick={() => setCurrent(item.value)}
         >
           <Text>{item.label}</Text>

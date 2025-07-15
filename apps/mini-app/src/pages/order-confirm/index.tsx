@@ -35,7 +35,9 @@ export default function OrderConfirm() {
           <Text className={styles.text}>应付：</Text>
           <Price primary value={110} />
         </Text>
-        <Button type="primary" size="md" onClick={onPay}>立即支付</Button>
+        <Button type="primary" size="md" onClick={onPay}>
+          立即支付
+        </Button>
       </ActionBar>
     </PageLayout>
   )

@@ -26,26 +26,20 @@ export default function NavBar(props: NavBarProps) {
   })
 
   return (
-    <View
-      className={classNames(styles.navBar, className)}
-    >
+    <View className={classNames(styles.navBar, className)}>
       <View className={styles.fixed}>
         <View className={styles.content}>
-
           <View className={styles.iconBtn} onClick={onBack}>
             <IconFont name="fanhui" size={28} color="#222" />
           </View>
-          {typeof title === 'string'
-            ? (
-                <View className={styles.title}>{title}</View>
-              )
-            : (
-                title
-              )}
+          {typeof title === 'string' ? (
+            <View className={styles.title}>{title}</View>
+          ) : (
+            title
+          )}
           <View className={styles.iconBtn} style={{ opacity: 0 }}>
             <IconFont name="guanbi" size={24} color="#222" />
           </View>
-
         </View>
       </View>
       <View
@@ -53,8 +47,7 @@ export default function NavBar(props: NavBarProps) {
         style={{
           opacity,
         }}
-      >
-      </View>
+      ></View>
       <View className={styles.static}></View>
     </View>
   )

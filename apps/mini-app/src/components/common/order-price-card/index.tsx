@@ -5,9 +5,7 @@ import { Text, View } from '@tarojs/components'
 
 import styles from './index.module.scss'
 
-export interface OrderPriceCardProps {
-
-}
+export type OrderPriceCardProps = object
 
 export default function OrderPriceCard() {
   return (

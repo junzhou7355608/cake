@@ -8,7 +8,6 @@ export default function SafeAreaTop() {
       style={{
         height: ui.safeArea.top(),
       }}
-    >
-    </View>
+    ></View>
   )
 }

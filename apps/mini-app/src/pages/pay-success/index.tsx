@@ -28,8 +28,12 @@ export default function PaySuccess() {
         <View className={styles.title}>支付成功</View>
         <View className={styles.subTitle}>您已完成支付，谢谢您的支持</View>
         <View className={styles.btns}>
-          <Button type="outline" size="md" onClick={onBackHome}>返回首页</Button>
-          <Button type="primary" size="md" onClick={onViewOrder}>查看订单</Button>
+          <Button type="outline" size="md" onClick={onBackHome}>
+            返回首页
+          </Button>
+          <Button type="primary" size="md" onClick={onViewOrder}>
+            查看订单
+          </Button>
         </View>
       </View>
     </PageLayout>

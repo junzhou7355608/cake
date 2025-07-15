@@ -8,9 +8,7 @@ import Taro from '@tarojs/taro'
 import { useMemoizedFn } from 'ahooks'
 import styles from './index.module.scss'
 
-export interface OrderItemCardProps {
-
-}
+export type OrderItemCardProps = object
 
 export default function OrderItemCard() {
   const onViewOrder = useMemoizedFn(() => {
@@ -26,9 +24,7 @@ export default function OrderItemCard() {
           <Text>盈盈甜品屋</Text>
           <IconFont name="arrow-right" size={20} color="#222" />
         </View>
-        <View className={styles.status}>
-          待支付
-        </View>
+        <View className={styles.status}>待支付</View>
       </View>
       <View className={styles.item}>
         <Image className={styles.image} src={goods}></Image>

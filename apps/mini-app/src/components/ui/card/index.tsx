@@ -13,7 +13,12 @@ export default function Card(props: PropsWithChildren<CardProps>) {
 
   return (
     <View
-      className={classNames(styles.card, styles[size], { [styles.hasActive]: !!restProps.onClick }, className)}
+      className={classNames(
+        styles.card,
+        styles[size],
+        { [styles.hasActive]: !!restProps.onClick },
+        className,
+      )}
       {...restProps}
     >
       {children}

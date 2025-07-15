@@ -52,7 +52,7 @@ export default function MineServices() {
 
   return (
     <View className={styles.services}>
-      {services.map(item => (
+      {services.map((item) => (
         <View className={styles.item} key={item.text} onClick={item.onClick}>
           <View className={styles.icon}>
             <IconFont name={item.icon} size={48} color="#222" />

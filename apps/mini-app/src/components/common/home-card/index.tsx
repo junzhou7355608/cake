@@ -15,9 +15,7 @@ export default function HomeCard(props: HomeCardProps) {
   return (
     <Card size="lg" className={styles.card} onClick={onClick}>
       <Image mode="aspectFill" className={styles.icon} src={icon}></Image>
-      <Text className={styles.text}>
-        {title}
-      </Text>
+      <Text className={styles.text}>{title}</Text>
     </Card>
   )
 }

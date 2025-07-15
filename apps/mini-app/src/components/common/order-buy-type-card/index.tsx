@@ -11,9 +11,7 @@ import { produce } from 'immer'
 import { useMemo } from 'react'
 import styles from './index.module.scss'
 
-export interface OrderBuyTypeCardProps {
-
-}
+export type OrderBuyTypeCardProps = object
 
 export default function OrderBuyTypeCard() {
   const [store, setStore] = useGlobalStoreAtom(appAtom)
@@ -23,16 +21,18 @@ export default function OrderBuyTypeCard() {
   return (
     <View className={styles.root}>
       <View className={styles.types}>
-        {types.map(item => (
+        {types.map((item) => (
           <View
             key={item}
             className={classNames(styles.item, {
               [styles.active]: store.buyType === item,
             })}
             onClick={() => {
-              setStore(produce((draft) => {
-                draft.buyType = item
-              }))
+              setStore(
+                produce((draft) => {
+                  draft.buyType = item
+                }),
+              )
             }}
           >
             {BuyTypeMap.get(item)}
@@ -53,9 +53,10 @@ export default function OrderBuyTypeCard() {
         </View>
       </View>
       <View className={styles.tabBg}></View>
-      <Card className={classNames(styles.card, {
-        [styles.active]: store.buyType === BuyType.Delivery,
-      })}
+      <Card
+        className={classNames(styles.card, {
+          [styles.active]: store.buyType === BuyType.Delivery,
+        })}
       >
         <View className={styles.title}>
           <Text>盈盈甜品屋</Text>

@@ -5,13 +5,18 @@ export function convertToCurrentDate(day: Dayjs): Dayjs {
   const parsedTime = dayjs(day)
 
   const currentDate = dayjs()
-  const updatedDate = currentDate.hour(parsedTime.hour()).minute(parsedTime.minute()).second(parsedTime.second()).millisecond(parsedTime.millisecond())
+  const updatedDate = currentDate
+    .hour(parsedTime.hour())
+    .minute(parsedTime.minute())
+    .second(parsedTime.second())
+    .millisecond(parsedTime.millisecond())
 
   return updatedDate
 }
 
 export function convertToBackendFormat(date: Dayjs): Dayjs {
-  return dayjs.unix(0)
+  return dayjs
+    .unix(0)
     .hour(date.hour())
     .minute(date.minute())
     .second(date.second())

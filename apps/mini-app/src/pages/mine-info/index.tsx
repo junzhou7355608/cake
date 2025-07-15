@@ -12,9 +12,12 @@ export default function MineInfo() {
     <PageLayout className={styles.root}>
       <NavBar title="个人信息" />
       <View className={styles.content}>
-
         <View className={styles.avatar}>
-          <Image mode="aspectFill" className={styles.avatarImg} src="https://img.yzcdn.cn/vant/cat.jpeg" />
+          <Image
+            mode="aspectFill"
+            className={styles.avatarImg}
+            src="https://img.yzcdn.cn/vant/cat.jpeg"
+          />
         </View>
         <Card>
           <View className={styles.form}>
@@ -25,7 +28,9 @@ export default function MineInfo() {
         </Card>
       </View>
       <ActionBar>
-        <Button size="lg" type="primary">保存</Button>
+        <Button size="lg" type="primary">
+          保存
+        </Button>
       </ActionBar>
     </PageLayout>
   )

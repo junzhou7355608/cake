@@ -30,7 +30,9 @@ export default function OrderDetail() {
       </View>
 
       <ActionBar className={styles.actionBar}>
-        <Button type="primary" size="md" onClick={onPay}>立即支付</Button>
+        <Button type="primary" size="md" onClick={onPay}>
+          立即支付
+        </Button>
       </ActionBar>
     </PageLayout>
   )

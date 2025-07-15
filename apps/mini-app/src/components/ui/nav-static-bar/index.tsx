@@ -15,7 +15,6 @@ export default function NavStaticBar(props: NavStaticBarProps) {
       border={false}
       title={title}
       fixed={fixed}
-    >
-    </NavBar>
+    ></NavBar>
   )
 }
