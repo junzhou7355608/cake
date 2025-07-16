@@ -6,19 +6,14 @@
   ],
   "prettier.enable": true,
   "eslint.enable": true,
+
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"
   },
 
-  "[scss]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "vscode.css-language-features"
-  },
-
   "files.insertFinalNewline": true,
-  "cSpell.words": [
-    "Appstore",
-    "generouted",
-    "Shopbag"
-  ],
+  "cSpell.words": ["Appstore", "Etheral", "generouted", "Shopbag"]
 }
