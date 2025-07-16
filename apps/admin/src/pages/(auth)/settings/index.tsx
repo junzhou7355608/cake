@@ -12,14 +12,10 @@ export default function Settings() {
           block
           onClick={() => {
             Dialog.confirm({
-              content: '是否提交申请',
+              content: '确认退出登录吗？',
               onConfirm: async () => {
-                await new Promise((resolve) => setTimeout(resolve, 3000))
-                Toast.show({
-                  icon: 'success',
-                  content: '提交成功',
-                  position: 'bottom'
-                })
+                await new Promise((resolve) => setTimeout(resolve, 1000))
+                Toast.show('退出成功')
               }
             })
           }}

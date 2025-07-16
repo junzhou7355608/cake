@@ -1,11 +1,18 @@
 @import 'tailwindcss';
 
-
 @theme {
   --color-bg-base: #f6f6f6;
   --height-tabbar: 60px;
+  --height-goods-tool: 44px;
 }
 
 body {
   background-color: var(--color-bg-base);
+}
+
+.goods-tabs .adm-side-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  min-height: calc(100vh);
 }
