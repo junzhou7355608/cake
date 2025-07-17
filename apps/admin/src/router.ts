@@ -11,6 +11,7 @@ export type Path =
   | `/goods-add`
   | `/goods-edit`
   | `/goods-sort`
+  | `/goods-warehouse`
   | `/login`
   | `/mine`
   | `/order`

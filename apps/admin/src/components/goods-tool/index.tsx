@@ -26,10 +26,10 @@ export default function GoodsTool() {
         <Button
           size="mini"
           onClick={() => {
-            navigate('/goods-add')
+            navigate('/goods-warehouse')
           }}
         >
-          新增商品
+          仓库管理
         </Button>
       </div>
     </div>

@@ -1,8 +1,12 @@
 import GoodsItem from '@/components/goods-item'
 import GoodsTool from '@/components/goods-tool'
+import { Icons } from '@/components/Icons'
+import NavBar from '@/components/nav-bar'
 import { Badge, SideBar } from 'antd-mobile'
+import { useNavigate } from 'react-router-dom'
 
 export default function Goods() {
+  const navigate = useNavigate()
   const tabs = [
     {
       key: 'key1',
@@ -24,6 +28,22 @@ export default function Goods() {
 
   return (
     <div className="goods-tabs">
+      <NavBar
+        backIcon={false}
+        right={
+          <div className="flex justify-end">
+            <Icons
+              onClick={() => {
+                navigate('/goods-add')
+              }}
+              className="size-[18px] text-[var(--adm-color-primary)]"
+              name="IconPlus"
+            />
+          </div>
+        }
+      >
+        商品管理
+      </NavBar>
       <div className="flex">
         <SideBar style={{ '--width': '90px' }}>
           {tabs.map((item) => (
