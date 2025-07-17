@@ -1,4 +1,4 @@
-import GoodsItem from '@/components/goods-item'
+import GoodsCategoryItem from '@/components/goods-category-item'
 import GoodsTool from '@/components/goods-tool'
 import { Icons } from '@/components/Icons'
 import NavBar from '@/components/nav-bar'
@@ -51,10 +51,10 @@ export default function Goods() {
           ))}
         </SideBar>
         <div className="min-h-[120vh] px-3 py-1 flex-1 bg-white">
-          <GoodsItem />
-          <GoodsItem />
-          <GoodsItem />
-          <GoodsItem />
+          <GoodsCategoryItem />
+          <GoodsCategoryItem />
+          <GoodsCategoryItem />
+          <GoodsCategoryItem />
         </div>
       </div>
 

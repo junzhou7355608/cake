@@ -1,15 +1,14 @@
-import { Button, Card, Ellipsis, Image } from 'antd-mobile'
+import { Button, Ellipsis, Image } from 'antd-mobile'
 import { useNavigate } from 'react-router-dom'
-import { Icons } from '../Icons'
 
-export default function GoodsItem() {
+export default function GoodsCategoryItem() {
   const navigate = useNavigate()
   const demoSrc =
     'https://images.unsplash.com/photo-1567945716310-4745a6b7844b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=60'
 
   return (
-    <Card>
-      <div className="flex items-center gap-2">
+    <div className="py-2 flex flex-col gap-2 border-b border-gray-100">
+      <div className="flex gap-2">
         <div className="w-[80px] h-[80px] rounded-md overflow-hidden">
           <Image className="!w-full !h-full" fit="cover" src={demoSrc} />
         </div>
@@ -27,8 +26,18 @@ export default function GoodsItem() {
             <div className="text-xs text-gray-500">库存: 100</div>
           </div>
         </div>
-        <Icons className="size-[18px]" name="IconChevronRight" />
       </div>
-    </Card>
+      <div className="w-full flex flex-wrap justify-end gap-2">
+        <Button
+          size="mini"
+          onClick={() => {
+            navigate('/goods-edit')
+          }}
+        >
+          编辑
+        </Button>
+        <Button size="mini">下架</Button>
+      </div>
+    </div>
   )
 }

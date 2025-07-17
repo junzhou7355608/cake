@@ -20,24 +20,14 @@ body {
 
 .goods-tabs .adm-side-bar {
   position: sticky;
-  top: 0;
+  top: 45px;
   z-index: 1;
-  min-height: calc(100vh);
+  min-height: calc(100vh - 45px);
 }
 
-.easy-sort-category {
-  --header-font-size: var(--adm-font-size-7);
-  --prefix-width: 'auto';
-  --prefix-padding-right: 12px;
-  --align-items: center;
-  --active-background-color: var(--adm-color-border);
-  /* --border-inner: solid 1px var(--adm-color-border); */
-  /* --border-top: solid 1px var(--adm-color-border); */
-  /* --border-bottom: solid 1px var(--adm-color-border); */
-  --padding-left: 12px;
-  font-size: 17px;
-}
-
-.easy-sort-category .adm-swipe-action {
-  width: 100%;
+.goods-warehouse .adm-tabs-header {
+  position: sticky;
+  top: 45px;
+  z-index: 1;
+  background-color: white;
 }
