@@ -1,6 +1,8 @@
 import { Button, Ellipsis, Image } from 'antd-mobile'
+import { useNavigate } from 'react-router-dom'
 
 export default function GoodsItem() {
+  const navigate = useNavigate()
   const demoSrc =
     'https://images.unsplash.com/photo-1567945716310-4745a6b7844b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=60'
 
@@ -26,7 +28,14 @@ export default function GoodsItem() {
         </div>
       </div>
       <div className="w-full flex flex-wrap justify-end gap-2">
-        <Button size="mini">编辑</Button>
+        <Button
+          size="mini"
+          onClick={() => {
+            navigate('/goods-edit')
+          }}
+        >
+          编辑
+        </Button>
         <Button size="mini">下架</Button>
       </div>
     </div>
