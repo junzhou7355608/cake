@@ -10,6 +10,10 @@ body {
   background-color: var(--color-bg-base);
 }
 
+.adm-nav-bar-back-arrow {
+  font-size: 20px;
+}
+
 .goods-tabs .adm-side-bar {
   position: sticky;
   top: 0;
