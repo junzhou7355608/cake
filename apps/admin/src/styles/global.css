@@ -16,3 +16,20 @@ body {
   z-index: 1;
   min-height: calc(100vh);
 }
+
+.easy-sort-category {
+  --header-font-size: var(--adm-font-size-7);
+  --prefix-width: 'auto';
+  --prefix-padding-right: 12px;
+  --align-items: center;
+  --active-background-color: var(--adm-color-border);
+  /* --border-inner: solid 1px var(--adm-color-border); */
+  /* --border-top: solid 1px var(--adm-color-border); */
+  /* --border-bottom: solid 1px var(--adm-color-border); */
+  --padding-left: 12px;
+  font-size: 17px;
+}
+
+.easy-sort-category .adm-swipe-action {
+  width: 100%;
+}

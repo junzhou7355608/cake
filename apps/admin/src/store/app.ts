@@ -1,4 +1,4 @@
-import { atom } from '@repo/utils'
+import { atom } from 'jotai'
 
 export interface AppStore {
   token?: string

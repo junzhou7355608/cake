@@ -85,5 +85,3 @@ export function createStoreAccessor(store: Store) {
     setStoreAtom
   ] as const
 }
-
-export * from 'jotai'
