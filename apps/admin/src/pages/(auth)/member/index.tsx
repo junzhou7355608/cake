@@ -147,7 +147,7 @@ export default function Member() {
   return (
     <div>
       <NavBar>会员管理</NavBar>
-      <List mode="card">
+      <List>
         {users.map((user) => (
           <List.Item
             key={user.name}

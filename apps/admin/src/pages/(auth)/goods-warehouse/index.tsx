@@ -9,7 +9,7 @@ export default function GoodsWarehouse() {
       <NavBar>仓库管理</NavBar>
       <Tabs
         style={{
-          '--content-padding': 0
+          '--content-padding': '0px'
         }}
       >
         <Tabs.Tab title="SPU" key="spu">
