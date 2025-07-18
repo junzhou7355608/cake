@@ -28,7 +28,7 @@ export default function Mine() {
           </div>
         </div>
       </div>
-      <List mode="card">
+      <List>
         <List.Item prefix={<UnorderedListOutline />} onClick={() => {}}>
           账单
         </List.Item>

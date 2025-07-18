@@ -35,6 +35,10 @@ body {
   font-size: 16px;
 }
 
+.adm-card {
+  border-radius: 0 !important;
+}
+
 .goods-tabs .adm-side-bar {
   position: sticky;
   top: 45px;

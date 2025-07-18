@@ -7,9 +7,13 @@ export default function GoodsWarehouse() {
   return (
     <div className="goods-warehouse">
       <NavBar>仓库管理</NavBar>
-      <Tabs>
+      <Tabs
+        style={{
+          '--content-padding': 0
+        }}
+      >
         <Tabs.Tab title="SPU" key="spu">
-          <div className="flex flex-col gap-2 pb-[var(--height-tabbar)]">
+          <div className="flex flex-col gap-[1px] pb-[var(--height-tabbar)]">
             <GoodsItem />
             <GoodsItem />
             <GoodsItem />
@@ -22,7 +26,7 @@ export default function GoodsWarehouse() {
           </div>
         </Tabs.Tab>
         <Tabs.Tab title="SKU" key="sku">
-          <div className="flex flex-col gap-2 pb-[var(--height-tabbar)]">
+          <div className="flex flex-col gap-[1px] pb-[var(--height-tabbar)]">
             <GoodsItem />
             <GoodsItem />
             <GoodsItem />

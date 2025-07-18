@@ -93,7 +93,7 @@ export default function GoodsSort() {
           items={items.map((item) => item.key)}
           strategy={verticalListSortingStrategy}
         >
-          <div className="p-3 flex flex-col gap-2">
+          <div className="flex flex-col gap-[1px]">
             {items.map((item) => (
               <SortableItem key={item.key} id={item.key}>
                 <GoodsSortItem />

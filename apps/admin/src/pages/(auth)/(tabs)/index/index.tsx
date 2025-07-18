@@ -6,7 +6,7 @@ export default function Index() {
     <div>
       <NavBar backIcon={false}>首页</NavBar>
 
-      <div className="p-3 flex flex-col gap-2">
+      <div className="flex flex-col gap-2">
         <ModuleCard />
       </div>
     </div>

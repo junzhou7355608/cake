@@ -6,7 +6,7 @@ export default function Order() {
   return (
     <div>
       <NavBar backIcon={false}>订单管理</NavBar>
-      <div className="p-3 pb-[100px] flex flex-col gap-2">
+      <div className="flex flex-col gap-[1px] pb-[100px]">
         <GoodsItem />
         <GoodsItem />
         <GoodsItem />

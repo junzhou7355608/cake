@@ -95,15 +95,13 @@ export default function Category() {
           items={items.map((item) => item.key)}
           strategy={verticalListSortingStrategy}
         >
-          <div className="p-3 flex flex-col gap-2">
+          <div className="flex flex-col gap-[1px]">
             {items.map((item) => (
               <SortableItem key={item.key} id={item.key}>
                 <Card className="touch-none select-none ">
                   <div className="flex items-center justify-between">
                     <Icons className="size-[18px]" name="IconGripVertical" />
-                    <div className="flex-1 text-base font-medium pl-2">
-                      {item.title}
-                    </div>
+                    <div className="flex-1 text-base pl-2">{item.title}</div>
                     <div className="flex items-center gap-1">
                       <Button size="mini" fill="none">
                         <Icons className="size-[18px]" name="IconEdit" />
