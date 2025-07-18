@@ -1,6 +1,10 @@
 import { EtheralShadow } from '@/components/etheral-shadow'
 import { Avatar, List } from 'antd-mobile'
-import { SetOutline, UnorderedListOutline } from 'antd-mobile-icons'
+import {
+  SetOutline,
+  SmileOutline,
+  UnorderedListOutline
+} from 'antd-mobile-icons'
 import { useNavigate } from 'react-router-dom'
 
 export default function Mine() {
@@ -27,6 +31,9 @@ export default function Mine() {
       <List mode="card">
         <List.Item prefix={<UnorderedListOutline />} onClick={() => {}}>
           账单
+        </List.Item>
+        <List.Item prefix={<SmileOutline />} onClick={() => {}}>
+          关于
         </List.Item>
         <List.Item
           prefix={<SetOutline />}

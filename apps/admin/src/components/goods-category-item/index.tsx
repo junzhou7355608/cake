@@ -7,7 +7,7 @@ export default function GoodsCategoryItem() {
     'https://images.unsplash.com/photo-1567945716310-4745a6b7844b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=60'
 
   return (
-    <div className="py-2 flex flex-col gap-2 border-b border-gray-100">
+    <div className="py-2 flex flex-col gap-2 border-b border-gray-100 goods-category-item">
       <div className="flex gap-2">
         <div className="w-[80px] h-[80px] rounded-md overflow-hidden">
           <Image className="!w-full !h-full" fit="cover" src={demoSrc} />

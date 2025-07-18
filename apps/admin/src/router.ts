@@ -6,6 +6,7 @@ import { components, hooks, utils } from '@generouted/react-router/client'
 export type Path =
   | `///`
   | `/about`
+  | `/bill`
   | `/category`
   | `/goods`
   | `/goods-add`
@@ -13,6 +14,7 @@ export type Path =
   | `/goods-sort`
   | `/goods-warehouse`
   | `/login`
+  | `/member`
   | `/mine`
   | `/order`
   | `/settings`

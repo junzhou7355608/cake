@@ -2,7 +2,7 @@ import GoodsCategoryItem from '@/components/goods-category-item'
 import GoodsTool from '@/components/goods-tool'
 import { Icons } from '@/components/Icons'
 import NavBar from '@/components/nav-bar'
-import { Badge, SideBar } from 'antd-mobile'
+import { Badge, Footer, SideBar } from 'antd-mobile'
 import { useNavigate } from 'react-router-dom'
 
 export default function Goods() {
@@ -50,18 +50,21 @@ export default function Goods() {
             <SideBar.Item key={item.key} title={item.title} />
           ))}
         </SideBar>
-        <div className="px-3 py-1 flex-1 bg-white">
-          <GoodsCategoryItem />
-          <GoodsCategoryItem />
-          <GoodsCategoryItem />
-          <GoodsCategoryItem />
-          <GoodsCategoryItem />
-          <GoodsCategoryItem />
-          <GoodsCategoryItem />
-          <GoodsCategoryItem />
-          <GoodsCategoryItem />
-          <GoodsCategoryItem />
-          <GoodsCategoryItem />
+        <div className="px-3 py-1 pb-[200px] flex-1 bg-white">
+          <div>
+            <GoodsCategoryItem />
+            <GoodsCategoryItem />
+            <GoodsCategoryItem />
+            <GoodsCategoryItem />
+            <GoodsCategoryItem />
+            <GoodsCategoryItem />
+            <GoodsCategoryItem />
+            <GoodsCategoryItem />
+            <GoodsCategoryItem />
+            <GoodsCategoryItem />
+            <GoodsCategoryItem />
+          </div>
+          <Footer label="没有更多了"></Footer>
         </div>
       </div>
 

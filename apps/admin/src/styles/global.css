@@ -4,6 +4,7 @@
   --color-bg-base: #f6f6f6;
   --height-tabbar: 60px;
   --height-goods-tool: 44px;
+  --color-primary: #1677ff;
 }
 
 html {
@@ -22,6 +23,18 @@ body {
   font-size: 16px;
 }
 
+.adm-list-body {
+  font-size: 16px;
+}
+
+.adm-footer {
+  background-color: transparent;
+}
+
+.adm-list-item-content-arrow {
+  font-size: 16px;
+}
+
 .goods-tabs .adm-side-bar {
   position: sticky;
   top: 45px;
@@ -34,4 +47,8 @@ body {
   top: 45px;
   z-index: 1;
   background-color: white;
+}
+
+.goods-category-item:last-child {
+  border-bottom: none;
 }
