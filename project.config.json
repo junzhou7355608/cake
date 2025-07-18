@@ -1,6 +1,6 @@
 {
-  "miniprogramRoot": "apps/mini-app/dist",
-  "cloudfunctionRoot": "apps/cloud-functions/dist",
+  "miniprogramRoot": "apps/mini-app/dist/",
+  "cloudfunctionRoot": "apps/cloud-functions/dist/",
   "projectname": "cake",
   "description": "盈盈甜品屋",
   "appid": "wx0d482e9b08e60cf1",
@@ -36,5 +36,6 @@
     "ignore": [],
     "include": []
   },
-  "editorSetting": {}
+  "editorSetting": {},
+  "libVersion": "3.8.11"
 }
