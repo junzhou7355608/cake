@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
-    "gen:icon": "npx @svgr/cli --jsx-runtime 'automatic' --replace-attr-values --icon --typescript --replace-attr-values '#fff=currentColor' --replace-attr-values '#ffffff=currentColor' --replace-attr-values 'white=currentColor' -d ./src/components/Icons/Custom ./src/assets/icons --filename-case \"pascal\""
+    "gen:icon": "npx @svgr/cli --jsx-runtime 'automatic' --replace-attr-values --icon --typescript --replace-attr-values '#fff=currentColor' --replace-attr-values '#ffffff=currentColor' --replace-attr-values 'white=currentColor' -d ./src/components/Icons/Custom ./src/assets/icons --filename-case \"pascal\"",
+    "deploy": "npm run build && npx tcb hosting deploy ./dist / -e dev-3gultvl9ac3a0128",
+    "login": "npx tcb login"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -31,6 +33,7 @@
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
+    "@cloudbase/cli": "^2.7.8",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@svgr/cli": "^8.1.0",

@@ -50,7 +50,14 @@ export default function Goods() {
             <SideBar.Item key={item.key} title={item.title} />
           ))}
         </SideBar>
-        <div className="min-h-[120vh] px-3 py-1 flex-1 bg-white">
+        <div className="px-3 py-1 flex-1 bg-white">
+          <GoodsCategoryItem />
+          <GoodsCategoryItem />
+          <GoodsCategoryItem />
+          <GoodsCategoryItem />
+          <GoodsCategoryItem />
+          <GoodsCategoryItem />
+          <GoodsCategoryItem />
           <GoodsCategoryItem />
           <GoodsCategoryItem />
           <GoodsCategoryItem />

@@ -1,5 +1,4 @@
 import { EtheralShadow } from '@/components/etheral-shadow'
-import NavBar from '@/components/nav-bar'
 import { Avatar, List } from 'antd-mobile'
 import { SetOutline, UnorderedListOutline } from 'antd-mobile-icons'
 import { useNavigate } from 'react-router-dom'

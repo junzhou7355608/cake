@@ -6,6 +6,10 @@
   --height-goods-tool: 44px;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: var(--color-bg-base);
 }

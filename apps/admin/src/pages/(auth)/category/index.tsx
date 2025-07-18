@@ -4,7 +4,6 @@ import { Button, Card } from 'antd-mobile'
 import { useState } from 'react'
 import { arrayMoveImmutable } from 'array-move'
 import { Icons } from '@/components/Icons'
-// 新增dnd-kit相关import
 import {
   DndContext,
   closestCenter,
@@ -79,7 +78,7 @@ export default function Category() {
     const { active, over } = event
     if (active.id !== over?.id) {
       const oldIndex = items.findIndex((item) => item.key === active.id)
-      const newIndex = items.findIndex((item) => item.key === over.id)
+      const newIndex = items.findIndex((item) => item.key === over?.id)
       setItems(arrayMoveImmutable(items, oldIndex, newIndex))
     }
   }

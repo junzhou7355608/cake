@@ -9,9 +9,5 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, 'src/') }]
   },
-  plugins: [react(), generouted(), tailwindcss()],
-  server: {
-    host: '0.0.0.0', // 允许局域网访问
-    port: 5173 // 可选，指定端口
-  }
+  plugins: [react(), generouted(), tailwindcss()]
 })
