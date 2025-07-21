@@ -85,7 +85,21 @@ export default function Category() {
 
   return (
     <div>
-      <NavBar>分类管理</NavBar>
+      <NavBar
+        right={
+          <div className="flex justify-end">
+            <Icons
+              onClick={() => {
+                // navigate('/goods-add')
+              }}
+              className="size-[20px] text-primary"
+              name="IconPlus"
+            />
+          </div>
+        }
+      >
+        分类管理
+      </NavBar>
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
@@ -119,7 +133,7 @@ export default function Category() {
       </DndContext>
       <ActionBar>
         <Button block color="primary">
-          新增分类
+          保存
         </Button>
       </ActionBar>
     </div>

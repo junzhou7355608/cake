@@ -16,6 +16,8 @@ import {
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import GoodsSortItem from '@/components/goods-sort-item'
+import ActionBar from '@/components/action-bar'
+import { Button } from 'antd-mobile'
 
 function SortableItem({
   id,
@@ -102,6 +104,11 @@ export default function GoodsSort() {
           </div>
         </SortableContext>
       </DndContext>
+      <ActionBar>
+        <Button block color="primary">
+          保存
+        </Button>
+      </ActionBar>
     </div>
   )
 }

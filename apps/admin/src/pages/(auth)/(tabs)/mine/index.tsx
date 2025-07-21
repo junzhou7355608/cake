@@ -1,37 +1,29 @@
-import { EtheralShadow } from '@/components/etheral-shadow'
 import { Avatar, List } from 'antd-mobile'
-import {
-  SetOutline,
-  SmileOutline,
-  UnorderedListOutline
-} from 'antd-mobile-icons'
+import { SetOutline, SmileOutline } from 'antd-mobile-icons'
 import { useNavigate } from 'react-router-dom'
+import bg from '@/assets/images/banner.jpeg'
 
 export default function Mine() {
   const navigate = useNavigate()
   return (
     <div>
-      <div className="w-full h-[220px] bg-white relative">
-        <EtheralShadow
-          color="rgba(128, 128, 128, 1)"
-          animation={{ scale: 100, speed: 90 }}
-          noise={{ opacity: 1, scale: 1.2 }}
-          sizing="fill"
-        />
-        <div className="absolute top-0 left-0 w-full h-full p-3 flex items-end">
-          <div className="flex items-center gap-2">
-            <Avatar src={'1'} />
-            <div className="flex flex-col justify-between">
-              <div className="text-lg font-bold">管理员</div>
-              <div className="text-sm text-zinc-800">189****9282</div>
-            </div>
+      <div
+        className="w-full h-[220px] relative flex items-end p-3 gap-2"
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'top'
+        }}
+      >
+        <div className="flex items-center gap-2">
+          <Avatar src="" />
+          <div className="flex flex-col justify-between gap-1">
+            <div className="text-base font-medium text-white">管理员</div>
+            <div className="text-xs text-white/80">189****9282</div>
           </div>
         </div>
       </div>
       <List>
-        <List.Item prefix={<UnorderedListOutline />} onClick={() => {}}>
-          账单
-        </List.Item>
         <List.Item prefix={<SmileOutline />} onClick={() => {}}>
           关于
         </List.Item>

@@ -36,7 +36,7 @@ export default function Goods() {
               onClick={() => {
                 navigate('/goods-add')
               }}
-              className="size-[18px] text-[var(--adm-color-primary)]"
+              className="size-[20px] text-primary"
               name="IconPlus"
             />
           </div>
