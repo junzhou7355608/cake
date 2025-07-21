@@ -1,8 +1,5 @@
 import Layout from '@/layouts'
-import { RouterProvider, createHashRouter } from 'react-router-dom'
-import { routes } from '@generouted/react-router'
-
-const Routes = () => <RouterProvider router={createHashRouter(routes)} />
+import { Routes } from '@generouted/react-router'
 
 function App() {
   return (

@@ -1,7 +1,25 @@
 import { cn } from '@/utils'
-import * as TablerIcons from '@tabler/icons-react'
+import {
+  IconGripVertical,
+  IconEdit,
+  IconTrash,
+  IconPlus,
+  IconUsers,
+  IconAlignBoxRightStretch,
+  IconChevronRight
+} from '@tabler/icons-react'
 import type { ComponentPropsWithoutRef } from 'react'
 import * as CustomIcons from './Custom'
+
+export const TablerIcons = {
+  IconUsers,
+  IconAlignBoxRightStretch,
+  IconGripVertical,
+  IconChevronRight,
+  IconEdit,
+  IconTrash,
+  IconPlus
+}
 
 export type TablerIconNames = keyof typeof TablerIcons
 export type CustomIconNames = keyof typeof CustomIcons

@@ -9,8 +9,10 @@
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "gen:icon": "npx @svgr/cli --jsx-runtime 'automatic' --replace-attr-values --icon --typescript --replace-attr-values '#fff=currentColor' --replace-attr-values '#ffffff=currentColor' --replace-attr-values 'white=currentColor' -d ./src/components/Icons/Custom ./src/assets/icons --filename-case \"pascal\"",
-    "deploy": "npm run build && npx tcb hosting deploy ./dist / -e dev-3gultvl9ac3a0128",
-    "login": "npx tcb login"
+    "analyze": "npm run build && open dist/report.html",
+    "deploy:ssh": "npm run build && tsx scripts/upload.ts",
+    "deploy:tcb": "npm run build && npx tcb hosting deploy ./dist / -e dev-3gultvl9ac3a0128",
+    "login:tcb": "npx tcb login"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -40,9 +42,14 @@
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react-swc": "^3.10.2",
+    "child_process": "^1.0.2",
     "eslint": "^9.30.0",
     "globals": "^16.3.0",
+    "log-symbols": "^7.0.1",
+    "rollup-plugin-visualizer": "^6.0.3",
+    "tsx": "^4.20.3",
     "typescript": "~5.8.3",
-    "vite": "^7.0.4"
+    "vite": "^7.0.4",
+    "vite-plugin-compression2": "^2.2.0"
   }
 }
