@@ -19,6 +19,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
+ * Model Member
+ * 
+ */
+export type Member = $Result.DefaultSelection<Prisma.$MemberPayload>
+/**
  * Model Order
  * 
  */
@@ -158,6 +163,16 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.member`: Exposes CRUD operations for the **Member** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Members
+    * const members = await prisma.member.findMany()
+    * ```
+    */
+  get member(): Prisma.MemberDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.order`: Exposes CRUD operations for the **Order** model.
@@ -609,6 +624,7 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
+    Member: 'Member',
     Order: 'Order'
   };
 
@@ -628,7 +644,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "order"
+      modelProps: "user" | "member" | "order"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -703,6 +719,80 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Member: {
+        payload: Prisma.$MemberPayload<ExtArgs>
+        fields: Prisma.MemberFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MemberFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemberPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MemberFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemberPayload>
+          }
+          findFirst: {
+            args: Prisma.MemberFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemberPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MemberFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemberPayload>
+          }
+          findMany: {
+            args: Prisma.MemberFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemberPayload>[]
+          }
+          create: {
+            args: Prisma.MemberCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemberPayload>
+          }
+          createMany: {
+            args: Prisma.MemberCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MemberCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemberPayload>[]
+          }
+          delete: {
+            args: Prisma.MemberDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemberPayload>
+          }
+          update: {
+            args: Prisma.MemberUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemberPayload>
+          }
+          deleteMany: {
+            args: Prisma.MemberDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MemberUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MemberUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemberPayload>[]
+          }
+          upsert: {
+            args: Prisma.MemberUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemberPayload>
+          }
+          aggregate: {
+            args: Prisma.MemberAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMember>
+          }
+          groupBy: {
+            args: Prisma.MemberGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MemberGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MemberCountArgs<ExtArgs>
+            result: $Utils.Optional<MemberCountAggregateOutputType> | number
           }
         }
       }
@@ -865,6 +955,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    member?: MemberOmit
     order?: OrderOmit
   }
 
@@ -955,6 +1046,36 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type MemberCountOutputType
+   */
+
+  export type MemberCountOutputType = {
+    referrals: number
+  }
+
+  export type MemberCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    referrals?: boolean | MemberCountOutputTypeCountReferralsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MemberCountOutputType without action
+   */
+  export type MemberCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberCountOutputType
+     */
+    select?: MemberCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MemberCountOutputType without action
+   */
+  export type MemberCountOutputTypeCountReferralsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemberWhereInput
+  }
+
 
   /**
    * Models
@@ -982,24 +1103,30 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: number | null
+    avatarUrl: string | null
     username: string | null
     password: string | null
+    role: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
+    avatarUrl: string | null
     username: string | null
     password: string | null
+    role: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
+    avatarUrl: number
     username: number
     password: number
+    role: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1016,24 +1143,30 @@ export namespace Prisma {
 
   export type UserMinAggregateInputType = {
     id?: true
+    avatarUrl?: true
     username?: true
     password?: true
+    role?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
+    avatarUrl?: true
     username?: true
     password?: true
+    role?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
+    avatarUrl?: true
     username?: true
     password?: true
+    role?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1127,8 +1260,10 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: number
+    avatarUrl: string | null
     username: string
     password: string
+    role: string
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -1154,45 +1289,55 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    avatarUrl?: boolean
     username?: boolean
     password?: boolean
+    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    avatarUrl?: boolean
     username?: boolean
     password?: boolean
+    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    avatarUrl?: boolean
     username?: boolean
     password?: boolean
+    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
+    avatarUrl?: boolean
     username?: boolean
     password?: boolean
+    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "avatarUrl" | "username" | "password" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      avatarUrl: string | null
       username: string
       password: string
+      role: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -1619,8 +1764,10 @@ export namespace Prisma {
    */
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'Int'>
+    readonly avatarUrl: FieldRef<"User", 'String'>
     readonly username: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly role: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -1990,6 +2137,1310 @@ export namespace Prisma {
 
 
   /**
+   * Model Member
+   */
+
+  export type AggregateMember = {
+    _count: MemberCountAggregateOutputType | null
+    _avg: MemberAvgAggregateOutputType | null
+    _sum: MemberSumAggregateOutputType | null
+    _min: MemberMinAggregateOutputType | null
+    _max: MemberMaxAggregateOutputType | null
+  }
+
+  export type MemberAvgAggregateOutputType = {
+    id: number | null
+    gender: number | null
+    status: number | null
+    level: number | null
+    points: number | null
+    referrerId: number | null
+  }
+
+  export type MemberSumAggregateOutputType = {
+    id: number | null
+    gender: number | null
+    status: number | null
+    level: number | null
+    points: number | null
+    referrerId: number | null
+  }
+
+  export type MemberMinAggregateOutputType = {
+    id: number | null
+    openid: string | null
+    unionid: string | null
+    nickname: string | null
+    avatarUrl: string | null
+    gender: number | null
+    phone: string | null
+    birthday: Date | null
+    status: number | null
+    lastLoginAt: Date | null
+    level: number | null
+    points: number | null
+    remark: string | null
+    referrerId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MemberMaxAggregateOutputType = {
+    id: number | null
+    openid: string | null
+    unionid: string | null
+    nickname: string | null
+    avatarUrl: string | null
+    gender: number | null
+    phone: string | null
+    birthday: Date | null
+    status: number | null
+    lastLoginAt: Date | null
+    level: number | null
+    points: number | null
+    remark: string | null
+    referrerId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MemberCountAggregateOutputType = {
+    id: number
+    openid: number
+    unionid: number
+    nickname: number
+    avatarUrl: number
+    gender: number
+    phone: number
+    birthday: number
+    status: number
+    lastLoginAt: number
+    level: number
+    points: number
+    remark: number
+    referrerId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MemberAvgAggregateInputType = {
+    id?: true
+    gender?: true
+    status?: true
+    level?: true
+    points?: true
+    referrerId?: true
+  }
+
+  export type MemberSumAggregateInputType = {
+    id?: true
+    gender?: true
+    status?: true
+    level?: true
+    points?: true
+    referrerId?: true
+  }
+
+  export type MemberMinAggregateInputType = {
+    id?: true
+    openid?: true
+    unionid?: true
+    nickname?: true
+    avatarUrl?: true
+    gender?: true
+    phone?: true
+    birthday?: true
+    status?: true
+    lastLoginAt?: true
+    level?: true
+    points?: true
+    remark?: true
+    referrerId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MemberMaxAggregateInputType = {
+    id?: true
+    openid?: true
+    unionid?: true
+    nickname?: true
+    avatarUrl?: true
+    gender?: true
+    phone?: true
+    birthday?: true
+    status?: true
+    lastLoginAt?: true
+    level?: true
+    points?: true
+    remark?: true
+    referrerId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MemberCountAggregateInputType = {
+    id?: true
+    openid?: true
+    unionid?: true
+    nickname?: true
+    avatarUrl?: true
+    gender?: true
+    phone?: true
+    birthday?: true
+    status?: true
+    lastLoginAt?: true
+    level?: true
+    points?: true
+    remark?: true
+    referrerId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MemberAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Member to aggregate.
+     */
+    where?: MemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Members to fetch.
+     */
+    orderBy?: MemberOrderByWithRelationInput | MemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Members from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Members.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Members
+    **/
+    _count?: true | MemberCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MemberAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MemberSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MemberMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MemberMaxAggregateInputType
+  }
+
+  export type GetMemberAggregateType<T extends MemberAggregateArgs> = {
+        [P in keyof T & keyof AggregateMember]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMember[P]>
+      : GetScalarType<T[P], AggregateMember[P]>
+  }
+
+
+
+
+  export type MemberGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemberWhereInput
+    orderBy?: MemberOrderByWithAggregationInput | MemberOrderByWithAggregationInput[]
+    by: MemberScalarFieldEnum[] | MemberScalarFieldEnum
+    having?: MemberScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MemberCountAggregateInputType | true
+    _avg?: MemberAvgAggregateInputType
+    _sum?: MemberSumAggregateInputType
+    _min?: MemberMinAggregateInputType
+    _max?: MemberMaxAggregateInputType
+  }
+
+  export type MemberGroupByOutputType = {
+    id: number
+    openid: string
+    unionid: string | null
+    nickname: string | null
+    avatarUrl: string | null
+    gender: number | null
+    phone: string | null
+    birthday: Date | null
+    status: number
+    lastLoginAt: Date | null
+    level: number | null
+    points: number
+    remark: string | null
+    referrerId: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: MemberCountAggregateOutputType | null
+    _avg: MemberAvgAggregateOutputType | null
+    _sum: MemberSumAggregateOutputType | null
+    _min: MemberMinAggregateOutputType | null
+    _max: MemberMaxAggregateOutputType | null
+  }
+
+  type GetMemberGroupByPayload<T extends MemberGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MemberGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MemberGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MemberGroupByOutputType[P]>
+            : GetScalarType<T[P], MemberGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MemberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    openid?: boolean
+    unionid?: boolean
+    nickname?: boolean
+    avatarUrl?: boolean
+    gender?: boolean
+    phone?: boolean
+    birthday?: boolean
+    status?: boolean
+    lastLoginAt?: boolean
+    level?: boolean
+    points?: boolean
+    remark?: boolean
+    referrerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    referrer?: boolean | Member$referrerArgs<ExtArgs>
+    referrals?: boolean | Member$referralsArgs<ExtArgs>
+    _count?: boolean | MemberCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["member"]>
+
+  export type MemberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    openid?: boolean
+    unionid?: boolean
+    nickname?: boolean
+    avatarUrl?: boolean
+    gender?: boolean
+    phone?: boolean
+    birthday?: boolean
+    status?: boolean
+    lastLoginAt?: boolean
+    level?: boolean
+    points?: boolean
+    remark?: boolean
+    referrerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    referrer?: boolean | Member$referrerArgs<ExtArgs>
+  }, ExtArgs["result"]["member"]>
+
+  export type MemberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    openid?: boolean
+    unionid?: boolean
+    nickname?: boolean
+    avatarUrl?: boolean
+    gender?: boolean
+    phone?: boolean
+    birthday?: boolean
+    status?: boolean
+    lastLoginAt?: boolean
+    level?: boolean
+    points?: boolean
+    remark?: boolean
+    referrerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    referrer?: boolean | Member$referrerArgs<ExtArgs>
+  }, ExtArgs["result"]["member"]>
+
+  export type MemberSelectScalar = {
+    id?: boolean
+    openid?: boolean
+    unionid?: boolean
+    nickname?: boolean
+    avatarUrl?: boolean
+    gender?: boolean
+    phone?: boolean
+    birthday?: boolean
+    status?: boolean
+    lastLoginAt?: boolean
+    level?: boolean
+    points?: boolean
+    remark?: boolean
+    referrerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "openid" | "unionid" | "nickname" | "avatarUrl" | "gender" | "phone" | "birthday" | "status" | "lastLoginAt" | "level" | "points" | "remark" | "referrerId" | "createdAt" | "updatedAt", ExtArgs["result"]["member"]>
+  export type MemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    referrer?: boolean | Member$referrerArgs<ExtArgs>
+    referrals?: boolean | Member$referralsArgs<ExtArgs>
+    _count?: boolean | MemberCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type MemberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    referrer?: boolean | Member$referrerArgs<ExtArgs>
+  }
+  export type MemberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    referrer?: boolean | Member$referrerArgs<ExtArgs>
+  }
+
+  export type $MemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Member"
+    objects: {
+      referrer: Prisma.$MemberPayload<ExtArgs> | null
+      referrals: Prisma.$MemberPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      openid: string
+      unionid: string | null
+      nickname: string | null
+      avatarUrl: string | null
+      gender: number | null
+      phone: string | null
+      birthday: Date | null
+      status: number
+      lastLoginAt: Date | null
+      level: number | null
+      points: number
+      remark: string | null
+      referrerId: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["member"]>
+    composites: {}
+  }
+
+  type MemberGetPayload<S extends boolean | null | undefined | MemberDefaultArgs> = $Result.GetResult<Prisma.$MemberPayload, S>
+
+  type MemberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MemberFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MemberCountAggregateInputType | true
+    }
+
+  export interface MemberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Member'], meta: { name: 'Member' } }
+    /**
+     * Find zero or one Member that matches the filter.
+     * @param {MemberFindUniqueArgs} args - Arguments to find a Member
+     * @example
+     * // Get one Member
+     * const member = await prisma.member.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MemberFindUniqueArgs>(args: SelectSubset<T, MemberFindUniqueArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Member that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MemberFindUniqueOrThrowArgs} args - Arguments to find a Member
+     * @example
+     * // Get one Member
+     * const member = await prisma.member.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MemberFindUniqueOrThrowArgs>(args: SelectSubset<T, MemberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Member that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberFindFirstArgs} args - Arguments to find a Member
+     * @example
+     * // Get one Member
+     * const member = await prisma.member.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MemberFindFirstArgs>(args?: SelectSubset<T, MemberFindFirstArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Member that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberFindFirstOrThrowArgs} args - Arguments to find a Member
+     * @example
+     * // Get one Member
+     * const member = await prisma.member.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MemberFindFirstOrThrowArgs>(args?: SelectSubset<T, MemberFindFirstOrThrowArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Members that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Members
+     * const members = await prisma.member.findMany()
+     * 
+     * // Get first 10 Members
+     * const members = await prisma.member.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const memberWithIdOnly = await prisma.member.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MemberFindManyArgs>(args?: SelectSubset<T, MemberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Member.
+     * @param {MemberCreateArgs} args - Arguments to create a Member.
+     * @example
+     * // Create one Member
+     * const Member = await prisma.member.create({
+     *   data: {
+     *     // ... data to create a Member
+     *   }
+     * })
+     * 
+     */
+    create<T extends MemberCreateArgs>(args: SelectSubset<T, MemberCreateArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Members.
+     * @param {MemberCreateManyArgs} args - Arguments to create many Members.
+     * @example
+     * // Create many Members
+     * const member = await prisma.member.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MemberCreateManyArgs>(args?: SelectSubset<T, MemberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Members and returns the data saved in the database.
+     * @param {MemberCreateManyAndReturnArgs} args - Arguments to create many Members.
+     * @example
+     * // Create many Members
+     * const member = await prisma.member.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Members and only return the `id`
+     * const memberWithIdOnly = await prisma.member.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MemberCreateManyAndReturnArgs>(args?: SelectSubset<T, MemberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Member.
+     * @param {MemberDeleteArgs} args - Arguments to delete one Member.
+     * @example
+     * // Delete one Member
+     * const Member = await prisma.member.delete({
+     *   where: {
+     *     // ... filter to delete one Member
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MemberDeleteArgs>(args: SelectSubset<T, MemberDeleteArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Member.
+     * @param {MemberUpdateArgs} args - Arguments to update one Member.
+     * @example
+     * // Update one Member
+     * const member = await prisma.member.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MemberUpdateArgs>(args: SelectSubset<T, MemberUpdateArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Members.
+     * @param {MemberDeleteManyArgs} args - Arguments to filter Members to delete.
+     * @example
+     * // Delete a few Members
+     * const { count } = await prisma.member.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MemberDeleteManyArgs>(args?: SelectSubset<T, MemberDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Members.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Members
+     * const member = await prisma.member.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MemberUpdateManyArgs>(args: SelectSubset<T, MemberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Members and returns the data updated in the database.
+     * @param {MemberUpdateManyAndReturnArgs} args - Arguments to update many Members.
+     * @example
+     * // Update many Members
+     * const member = await prisma.member.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Members and only return the `id`
+     * const memberWithIdOnly = await prisma.member.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MemberUpdateManyAndReturnArgs>(args: SelectSubset<T, MemberUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Member.
+     * @param {MemberUpsertArgs} args - Arguments to update or create a Member.
+     * @example
+     * // Update or create a Member
+     * const member = await prisma.member.upsert({
+     *   create: {
+     *     // ... data to create a Member
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Member we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MemberUpsertArgs>(args: SelectSubset<T, MemberUpsertArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Members.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberCountArgs} args - Arguments to filter Members to count.
+     * @example
+     * // Count the number of Members
+     * const count = await prisma.member.count({
+     *   where: {
+     *     // ... the filter for the Members we want to count
+     *   }
+     * })
+    **/
+    count<T extends MemberCountArgs>(
+      args?: Subset<T, MemberCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MemberCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Member.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MemberAggregateArgs>(args: Subset<T, MemberAggregateArgs>): Prisma.PrismaPromise<GetMemberAggregateType<T>>
+
+    /**
+     * Group by Member.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MemberGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MemberGroupByArgs['orderBy'] }
+        : { orderBy?: MemberGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MemberGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMemberGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Member model
+   */
+  readonly fields: MemberFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Member.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    referrer<T extends Member$referrerArgs<ExtArgs> = {}>(args?: Subset<T, Member$referrerArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    referrals<T extends Member$referralsArgs<ExtArgs> = {}>(args?: Subset<T, Member$referralsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Member model
+   */
+  interface MemberFieldRefs {
+    readonly id: FieldRef<"Member", 'Int'>
+    readonly openid: FieldRef<"Member", 'String'>
+    readonly unionid: FieldRef<"Member", 'String'>
+    readonly nickname: FieldRef<"Member", 'String'>
+    readonly avatarUrl: FieldRef<"Member", 'String'>
+    readonly gender: FieldRef<"Member", 'Int'>
+    readonly phone: FieldRef<"Member", 'String'>
+    readonly birthday: FieldRef<"Member", 'DateTime'>
+    readonly status: FieldRef<"Member", 'Int'>
+    readonly lastLoginAt: FieldRef<"Member", 'DateTime'>
+    readonly level: FieldRef<"Member", 'Int'>
+    readonly points: FieldRef<"Member", 'Int'>
+    readonly remark: FieldRef<"Member", 'String'>
+    readonly referrerId: FieldRef<"Member", 'Int'>
+    readonly createdAt: FieldRef<"Member", 'DateTime'>
+    readonly updatedAt: FieldRef<"Member", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Member findUnique
+   */
+  export type MemberFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+    /**
+     * Filter, which Member to fetch.
+     */
+    where: MemberWhereUniqueInput
+  }
+
+  /**
+   * Member findUniqueOrThrow
+   */
+  export type MemberFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+    /**
+     * Filter, which Member to fetch.
+     */
+    where: MemberWhereUniqueInput
+  }
+
+  /**
+   * Member findFirst
+   */
+  export type MemberFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+    /**
+     * Filter, which Member to fetch.
+     */
+    where?: MemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Members to fetch.
+     */
+    orderBy?: MemberOrderByWithRelationInput | MemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Members.
+     */
+    cursor?: MemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Members from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Members.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Members.
+     */
+    distinct?: MemberScalarFieldEnum | MemberScalarFieldEnum[]
+  }
+
+  /**
+   * Member findFirstOrThrow
+   */
+  export type MemberFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+    /**
+     * Filter, which Member to fetch.
+     */
+    where?: MemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Members to fetch.
+     */
+    orderBy?: MemberOrderByWithRelationInput | MemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Members.
+     */
+    cursor?: MemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Members from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Members.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Members.
+     */
+    distinct?: MemberScalarFieldEnum | MemberScalarFieldEnum[]
+  }
+
+  /**
+   * Member findMany
+   */
+  export type MemberFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+    /**
+     * Filter, which Members to fetch.
+     */
+    where?: MemberWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Members to fetch.
+     */
+    orderBy?: MemberOrderByWithRelationInput | MemberOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Members.
+     */
+    cursor?: MemberWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Members from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Members.
+     */
+    skip?: number
+    distinct?: MemberScalarFieldEnum | MemberScalarFieldEnum[]
+  }
+
+  /**
+   * Member create
+   */
+  export type MemberCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Member.
+     */
+    data: XOR<MemberCreateInput, MemberUncheckedCreateInput>
+  }
+
+  /**
+   * Member createMany
+   */
+  export type MemberCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Members.
+     */
+    data: MemberCreateManyInput | MemberCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Member createManyAndReturn
+   */
+  export type MemberCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * The data used to create many Members.
+     */
+    data: MemberCreateManyInput | MemberCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Member update
+   */
+  export type MemberUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Member.
+     */
+    data: XOR<MemberUpdateInput, MemberUncheckedUpdateInput>
+    /**
+     * Choose, which Member to update.
+     */
+    where: MemberWhereUniqueInput
+  }
+
+  /**
+   * Member updateMany
+   */
+  export type MemberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Members.
+     */
+    data: XOR<MemberUpdateManyMutationInput, MemberUncheckedUpdateManyInput>
+    /**
+     * Filter which Members to update
+     */
+    where?: MemberWhereInput
+    /**
+     * Limit how many Members to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Member updateManyAndReturn
+   */
+  export type MemberUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * The data used to update Members.
+     */
+    data: XOR<MemberUpdateManyMutationInput, MemberUncheckedUpdateManyInput>
+    /**
+     * Filter which Members to update
+     */
+    where?: MemberWhereInput
+    /**
+     * Limit how many Members to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Member upsert
+   */
+  export type MemberUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Member to update in case it exists.
+     */
+    where: MemberWhereUniqueInput
+    /**
+     * In case the Member found by the `where` argument doesn't exist, create a new Member with this data.
+     */
+    create: XOR<MemberCreateInput, MemberUncheckedCreateInput>
+    /**
+     * In case the Member was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MemberUpdateInput, MemberUncheckedUpdateInput>
+  }
+
+  /**
+   * Member delete
+   */
+  export type MemberDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+    /**
+     * Filter which Member to delete.
+     */
+    where: MemberWhereUniqueInput
+  }
+
+  /**
+   * Member deleteMany
+   */
+  export type MemberDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Members to delete
+     */
+    where?: MemberWhereInput
+    /**
+     * Limit how many Members to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Member.referrer
+   */
+  export type Member$referrerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+    where?: MemberWhereInput
+  }
+
+  /**
+   * Member.referrals
+   */
+  export type Member$referralsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+    where?: MemberWhereInput
+    orderBy?: MemberOrderByWithRelationInput | MemberOrderByWithRelationInput[]
+    cursor?: MemberWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MemberScalarFieldEnum | MemberScalarFieldEnum[]
+  }
+
+  /**
+   * Member without action
+   */
+  export type MemberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Member
+     */
+    select?: MemberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Member
+     */
+    omit?: MemberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MemberInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Order
    */
 
@@ -2003,26 +3454,62 @@ export namespace Prisma {
 
   export type OrderAvgAggregateOutputType = {
     id: number | null
+    memberId: number | null
+    deliveryType: number | null
+    storeId: number | null
   }
 
   export type OrderSumAggregateOutputType = {
     id: number | null
+    memberId: number | null
+    deliveryType: number | null
+    storeId: number | null
   }
 
   export type OrderMinAggregateOutputType = {
     id: number | null
+    orderNo: string | null
+    memberId: number | null
+    deliveryType: number | null
+    receiverName: string | null
+    receiverPhone: string | null
+    receiverAddr: string | null
+    storeId: number | null
+    storeName: string | null
+    pickupCode: string | null
+    pickupTime: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type OrderMaxAggregateOutputType = {
     id: number | null
+    orderNo: string | null
+    memberId: number | null
+    deliveryType: number | null
+    receiverName: string | null
+    receiverPhone: string | null
+    receiverAddr: string | null
+    storeId: number | null
+    storeName: string | null
+    pickupCode: string | null
+    pickupTime: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type OrderCountAggregateOutputType = {
     id: number
+    orderNo: number
+    memberId: number
+    deliveryType: number
+    receiverName: number
+    receiverPhone: number
+    receiverAddr: number
+    storeId: number
+    storeName: number
+    pickupCode: number
+    pickupTime: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2031,26 +3518,62 @@ export namespace Prisma {
 
   export type OrderAvgAggregateInputType = {
     id?: true
+    memberId?: true
+    deliveryType?: true
+    storeId?: true
   }
 
   export type OrderSumAggregateInputType = {
     id?: true
+    memberId?: true
+    deliveryType?: true
+    storeId?: true
   }
 
   export type OrderMinAggregateInputType = {
     id?: true
+    orderNo?: true
+    memberId?: true
+    deliveryType?: true
+    receiverName?: true
+    receiverPhone?: true
+    receiverAddr?: true
+    storeId?: true
+    storeName?: true
+    pickupCode?: true
+    pickupTime?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type OrderMaxAggregateInputType = {
     id?: true
+    orderNo?: true
+    memberId?: true
+    deliveryType?: true
+    receiverName?: true
+    receiverPhone?: true
+    receiverAddr?: true
+    storeId?: true
+    storeName?: true
+    pickupCode?: true
+    pickupTime?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type OrderCountAggregateInputType = {
     id?: true
+    orderNo?: true
+    memberId?: true
+    deliveryType?: true
+    receiverName?: true
+    receiverPhone?: true
+    receiverAddr?: true
+    storeId?: true
+    storeName?: true
+    pickupCode?: true
+    pickupTime?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2144,6 +3667,16 @@ export namespace Prisma {
 
   export type OrderGroupByOutputType = {
     id: number
+    orderNo: string
+    memberId: number
+    deliveryType: number
+    receiverName: string | null
+    receiverPhone: string | null
+    receiverAddr: string | null
+    storeId: number | null
+    storeName: string | null
+    pickupCode: string | null
+    pickupTime: Date | null
     createdAt: Date
     updatedAt: Date
     _count: OrderCountAggregateOutputType | null
@@ -2169,35 +3702,85 @@ export namespace Prisma {
 
   export type OrderSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    orderNo?: boolean
+    memberId?: boolean
+    deliveryType?: boolean
+    receiverName?: boolean
+    receiverPhone?: boolean
+    receiverAddr?: boolean
+    storeId?: boolean
+    storeName?: boolean
+    pickupCode?: boolean
+    pickupTime?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    orderNo?: boolean
+    memberId?: boolean
+    deliveryType?: boolean
+    receiverName?: boolean
+    receiverPhone?: boolean
+    receiverAddr?: boolean
+    storeId?: boolean
+    storeName?: boolean
+    pickupCode?: boolean
+    pickupTime?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    orderNo?: boolean
+    memberId?: boolean
+    deliveryType?: boolean
+    receiverName?: boolean
+    receiverPhone?: boolean
+    receiverAddr?: boolean
+    storeId?: boolean
+    storeName?: boolean
+    pickupCode?: boolean
+    pickupTime?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectScalar = {
     id?: boolean
+    orderNo?: boolean
+    memberId?: boolean
+    deliveryType?: boolean
+    receiverName?: boolean
+    receiverPhone?: boolean
+    receiverAddr?: boolean
+    storeId?: boolean
+    storeName?: boolean
+    pickupCode?: boolean
+    pickupTime?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt", ExtArgs["result"]["order"]>
+  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "orderNo" | "memberId" | "deliveryType" | "receiverName" | "receiverPhone" | "receiverAddr" | "storeId" | "storeName" | "pickupCode" | "pickupTime" | "createdAt" | "updatedAt", ExtArgs["result"]["order"]>
 
   export type $OrderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Order"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      orderNo: string
+      memberId: number
+      deliveryType: number
+      receiverName: string | null
+      receiverPhone: string | null
+      receiverAddr: string | null
+      storeId: number | null
+      storeName: string | null
+      pickupCode: string | null
+      pickupTime: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["order"]>
@@ -2624,6 +4207,16 @@ export namespace Prisma {
    */
   interface OrderFieldRefs {
     readonly id: FieldRef<"Order", 'Int'>
+    readonly orderNo: FieldRef<"Order", 'String'>
+    readonly memberId: FieldRef<"Order", 'Int'>
+    readonly deliveryType: FieldRef<"Order", 'Int'>
+    readonly receiverName: FieldRef<"Order", 'String'>
+    readonly receiverPhone: FieldRef<"Order", 'String'>
+    readonly receiverAddr: FieldRef<"Order", 'String'>
+    readonly storeId: FieldRef<"Order", 'Int'>
+    readonly storeName: FieldRef<"Order", 'String'>
+    readonly pickupCode: FieldRef<"Order", 'String'>
+    readonly pickupTime: FieldRef<"Order", 'DateTime'>
     readonly createdAt: FieldRef<"Order", 'DateTime'>
     readonly updatedAt: FieldRef<"Order", 'DateTime'>
   }
@@ -3008,8 +4601,10 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
+    avatarUrl: 'avatarUrl',
     username: 'username',
     password: 'password',
+    role: 'role',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -3017,8 +4612,40 @@ export namespace Prisma {
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+  export const MemberScalarFieldEnum: {
+    id: 'id',
+    openid: 'openid',
+    unionid: 'unionid',
+    nickname: 'nickname',
+    avatarUrl: 'avatarUrl',
+    gender: 'gender',
+    phone: 'phone',
+    birthday: 'birthday',
+    status: 'status',
+    lastLoginAt: 'lastLoginAt',
+    level: 'level',
+    points: 'points',
+    remark: 'remark',
+    referrerId: 'referrerId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MemberScalarFieldEnum = (typeof MemberScalarFieldEnum)[keyof typeof MemberScalarFieldEnum]
+
+
   export const OrderScalarFieldEnum: {
     id: 'id',
+    orderNo: 'orderNo',
+    memberId: 'memberId',
+    deliveryType: 'deliveryType',
+    receiverName: 'receiverName',
+    receiverPhone: 'receiverPhone',
+    receiverAddr: 'receiverAddr',
+    storeId: 'storeId',
+    storeName: 'storeName',
+    pickupCode: 'pickupCode',
+    pickupTime: 'pickupTime',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -3040,6 +4667,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -3111,16 +4746,20 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: IntFilter<"User"> | number
+    avatarUrl?: StringNullableFilter<"User"> | string | null
     username?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    role?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
+    avatarUrl?: SortOrderInput | SortOrder
     username?: SortOrder
     password?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -3131,15 +4770,19 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
+    avatarUrl?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
+    role?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
   }, "id" | "username">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
+    avatarUrl?: SortOrderInput | SortOrder
     username?: SortOrder
     password?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -3154,10 +4797,127 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"User"> | number
+    avatarUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
     username?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
+    role?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+  }
+
+  export type MemberWhereInput = {
+    AND?: MemberWhereInput | MemberWhereInput[]
+    OR?: MemberWhereInput[]
+    NOT?: MemberWhereInput | MemberWhereInput[]
+    id?: IntFilter<"Member"> | number
+    openid?: StringFilter<"Member"> | string
+    unionid?: StringNullableFilter<"Member"> | string | null
+    nickname?: StringNullableFilter<"Member"> | string | null
+    avatarUrl?: StringNullableFilter<"Member"> | string | null
+    gender?: IntNullableFilter<"Member"> | number | null
+    phone?: StringNullableFilter<"Member"> | string | null
+    birthday?: DateTimeNullableFilter<"Member"> | Date | string | null
+    status?: IntFilter<"Member"> | number
+    lastLoginAt?: DateTimeNullableFilter<"Member"> | Date | string | null
+    level?: IntNullableFilter<"Member"> | number | null
+    points?: IntFilter<"Member"> | number
+    remark?: StringNullableFilter<"Member"> | string | null
+    referrerId?: IntNullableFilter<"Member"> | number | null
+    createdAt?: DateTimeFilter<"Member"> | Date | string
+    updatedAt?: DateTimeFilter<"Member"> | Date | string
+    referrer?: XOR<MemberNullableScalarRelationFilter, MemberWhereInput> | null
+    referrals?: MemberListRelationFilter
+  }
+
+  export type MemberOrderByWithRelationInput = {
+    id?: SortOrder
+    openid?: SortOrder
+    unionid?: SortOrderInput | SortOrder
+    nickname?: SortOrderInput | SortOrder
+    avatarUrl?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    birthday?: SortOrderInput | SortOrder
+    status?: SortOrder
+    lastLoginAt?: SortOrderInput | SortOrder
+    level?: SortOrderInput | SortOrder
+    points?: SortOrder
+    remark?: SortOrderInput | SortOrder
+    referrerId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    referrer?: MemberOrderByWithRelationInput
+    referrals?: MemberOrderByRelationAggregateInput
+  }
+
+  export type MemberWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    openid?: string
+    unionid?: string
+    AND?: MemberWhereInput | MemberWhereInput[]
+    OR?: MemberWhereInput[]
+    NOT?: MemberWhereInput | MemberWhereInput[]
+    nickname?: StringNullableFilter<"Member"> | string | null
+    avatarUrl?: StringNullableFilter<"Member"> | string | null
+    gender?: IntNullableFilter<"Member"> | number | null
+    phone?: StringNullableFilter<"Member"> | string | null
+    birthday?: DateTimeNullableFilter<"Member"> | Date | string | null
+    status?: IntFilter<"Member"> | number
+    lastLoginAt?: DateTimeNullableFilter<"Member"> | Date | string | null
+    level?: IntNullableFilter<"Member"> | number | null
+    points?: IntFilter<"Member"> | number
+    remark?: StringNullableFilter<"Member"> | string | null
+    referrerId?: IntNullableFilter<"Member"> | number | null
+    createdAt?: DateTimeFilter<"Member"> | Date | string
+    updatedAt?: DateTimeFilter<"Member"> | Date | string
+    referrer?: XOR<MemberNullableScalarRelationFilter, MemberWhereInput> | null
+    referrals?: MemberListRelationFilter
+  }, "id" | "openid" | "unionid">
+
+  export type MemberOrderByWithAggregationInput = {
+    id?: SortOrder
+    openid?: SortOrder
+    unionid?: SortOrderInput | SortOrder
+    nickname?: SortOrderInput | SortOrder
+    avatarUrl?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    birthday?: SortOrderInput | SortOrder
+    status?: SortOrder
+    lastLoginAt?: SortOrderInput | SortOrder
+    level?: SortOrderInput | SortOrder
+    points?: SortOrder
+    remark?: SortOrderInput | SortOrder
+    referrerId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MemberCountOrderByAggregateInput
+    _avg?: MemberAvgOrderByAggregateInput
+    _max?: MemberMaxOrderByAggregateInput
+    _min?: MemberMinOrderByAggregateInput
+    _sum?: MemberSumOrderByAggregateInput
+  }
+
+  export type MemberScalarWhereWithAggregatesInput = {
+    AND?: MemberScalarWhereWithAggregatesInput | MemberScalarWhereWithAggregatesInput[]
+    OR?: MemberScalarWhereWithAggregatesInput[]
+    NOT?: MemberScalarWhereWithAggregatesInput | MemberScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Member"> | number
+    openid?: StringWithAggregatesFilter<"Member"> | string
+    unionid?: StringNullableWithAggregatesFilter<"Member"> | string | null
+    nickname?: StringNullableWithAggregatesFilter<"Member"> | string | null
+    avatarUrl?: StringNullableWithAggregatesFilter<"Member"> | string | null
+    gender?: IntNullableWithAggregatesFilter<"Member"> | number | null
+    phone?: StringNullableWithAggregatesFilter<"Member"> | string | null
+    birthday?: DateTimeNullableWithAggregatesFilter<"Member"> | Date | string | null
+    status?: IntWithAggregatesFilter<"Member"> | number
+    lastLoginAt?: DateTimeNullableWithAggregatesFilter<"Member"> | Date | string | null
+    level?: IntNullableWithAggregatesFilter<"Member"> | number | null
+    points?: IntWithAggregatesFilter<"Member"> | number
+    remark?: StringNullableWithAggregatesFilter<"Member"> | string | null
+    referrerId?: IntNullableWithAggregatesFilter<"Member"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"Member"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Member"> | Date | string
   }
 
   export type OrderWhereInput = {
@@ -3165,27 +4925,67 @@ export namespace Prisma {
     OR?: OrderWhereInput[]
     NOT?: OrderWhereInput | OrderWhereInput[]
     id?: IntFilter<"Order"> | number
+    orderNo?: StringFilter<"Order"> | string
+    memberId?: IntFilter<"Order"> | number
+    deliveryType?: IntFilter<"Order"> | number
+    receiverName?: StringNullableFilter<"Order"> | string | null
+    receiverPhone?: StringNullableFilter<"Order"> | string | null
+    receiverAddr?: StringNullableFilter<"Order"> | string | null
+    storeId?: IntNullableFilter<"Order"> | number | null
+    storeName?: StringNullableFilter<"Order"> | string | null
+    pickupCode?: StringNullableFilter<"Order"> | string | null
+    pickupTime?: DateTimeNullableFilter<"Order"> | Date | string | null
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
   }
 
   export type OrderOrderByWithRelationInput = {
     id?: SortOrder
+    orderNo?: SortOrder
+    memberId?: SortOrder
+    deliveryType?: SortOrder
+    receiverName?: SortOrderInput | SortOrder
+    receiverPhone?: SortOrderInput | SortOrder
+    receiverAddr?: SortOrderInput | SortOrder
+    storeId?: SortOrderInput | SortOrder
+    storeName?: SortOrderInput | SortOrder
+    pickupCode?: SortOrderInput | SortOrder
+    pickupTime?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type OrderWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    orderNo?: string
     AND?: OrderWhereInput | OrderWhereInput[]
     OR?: OrderWhereInput[]
     NOT?: OrderWhereInput | OrderWhereInput[]
+    memberId?: IntFilter<"Order"> | number
+    deliveryType?: IntFilter<"Order"> | number
+    receiverName?: StringNullableFilter<"Order"> | string | null
+    receiverPhone?: StringNullableFilter<"Order"> | string | null
+    receiverAddr?: StringNullableFilter<"Order"> | string | null
+    storeId?: IntNullableFilter<"Order"> | number | null
+    storeName?: StringNullableFilter<"Order"> | string | null
+    pickupCode?: StringNullableFilter<"Order"> | string | null
+    pickupTime?: DateTimeNullableFilter<"Order"> | Date | string | null
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
-  }, "id">
+  }, "id" | "orderNo">
 
   export type OrderOrderByWithAggregationInput = {
     id?: SortOrder
+    orderNo?: SortOrder
+    memberId?: SortOrder
+    deliveryType?: SortOrder
+    receiverName?: SortOrderInput | SortOrder
+    receiverPhone?: SortOrderInput | SortOrder
+    receiverAddr?: SortOrderInput | SortOrder
+    storeId?: SortOrderInput | SortOrder
+    storeName?: SortOrderInput | SortOrder
+    pickupCode?: SortOrderInput | SortOrder
+    pickupTime?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: OrderCountOrderByAggregateInput
@@ -3200,98 +5000,325 @@ export namespace Prisma {
     OR?: OrderScalarWhereWithAggregatesInput[]
     NOT?: OrderScalarWhereWithAggregatesInput | OrderScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Order"> | number
+    orderNo?: StringWithAggregatesFilter<"Order"> | string
+    memberId?: IntWithAggregatesFilter<"Order"> | number
+    deliveryType?: IntWithAggregatesFilter<"Order"> | number
+    receiverName?: StringNullableWithAggregatesFilter<"Order"> | string | null
+    receiverPhone?: StringNullableWithAggregatesFilter<"Order"> | string | null
+    receiverAddr?: StringNullableWithAggregatesFilter<"Order"> | string | null
+    storeId?: IntNullableWithAggregatesFilter<"Order"> | number | null
+    storeName?: StringNullableWithAggregatesFilter<"Order"> | string | null
+    pickupCode?: StringNullableWithAggregatesFilter<"Order"> | string | null
+    pickupTime?: DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
   }
 
   export type UserCreateInput = {
+    avatarUrl?: string | null
     username: string
     password: string
+    role: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
+    avatarUrl?: string | null
     username: string
     password: string
+    role: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type UserUpdateInput = {
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCreateManyInput = {
     id?: number
+    avatarUrl?: string | null
     username: string
     password: string
+    role: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MemberCreateInput = {
+    openid: string
+    unionid?: string | null
+    nickname?: string | null
+    avatarUrl?: string | null
+    gender?: number | null
+    phone?: string | null
+    birthday?: Date | string | null
+    status?: number
+    lastLoginAt?: Date | string | null
+    level?: number | null
+    points?: number
+    remark?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    referrer?: MemberCreateNestedOneWithoutReferralsInput
+    referrals?: MemberCreateNestedManyWithoutReferrerInput
+  }
+
+  export type MemberUncheckedCreateInput = {
+    id?: number
+    openid: string
+    unionid?: string | null
+    nickname?: string | null
+    avatarUrl?: string | null
+    gender?: number | null
+    phone?: string | null
+    birthday?: Date | string | null
+    status?: number
+    lastLoginAt?: Date | string | null
+    level?: number | null
+    points?: number
+    remark?: string | null
+    referrerId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    referrals?: MemberUncheckedCreateNestedManyWithoutReferrerInput
+  }
+
+  export type MemberUpdateInput = {
+    openid?: StringFieldUpdateOperationsInput | string
+    unionid?: NullableStringFieldUpdateOperationsInput | string | null
+    nickname?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    points?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrer?: MemberUpdateOneWithoutReferralsNestedInput
+    referrals?: MemberUpdateManyWithoutReferrerNestedInput
+  }
+
+  export type MemberUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    openid?: StringFieldUpdateOperationsInput | string
+    unionid?: NullableStringFieldUpdateOperationsInput | string | null
+    nickname?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    points?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    referrerId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrals?: MemberUncheckedUpdateManyWithoutReferrerNestedInput
+  }
+
+  export type MemberCreateManyInput = {
+    id?: number
+    openid: string
+    unionid?: string | null
+    nickname?: string | null
+    avatarUrl?: string | null
+    gender?: number | null
+    phone?: string | null
+    birthday?: Date | string | null
+    status?: number
+    lastLoginAt?: Date | string | null
+    level?: number | null
+    points?: number
+    remark?: string | null
+    referrerId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MemberUpdateManyMutationInput = {
+    openid?: StringFieldUpdateOperationsInput | string
+    unionid?: NullableStringFieldUpdateOperationsInput | string | null
+    nickname?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    points?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MemberUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    openid?: StringFieldUpdateOperationsInput | string
+    unionid?: NullableStringFieldUpdateOperationsInput | string | null
+    nickname?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    points?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    referrerId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderCreateInput = {
+    orderNo: string
+    memberId: number
+    deliveryType?: number
+    receiverName?: string | null
+    receiverPhone?: string | null
+    receiverAddr?: string | null
+    storeId?: number | null
+    storeName?: string | null
+    pickupCode?: string | null
+    pickupTime?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type OrderUncheckedCreateInput = {
     id?: number
+    orderNo: string
+    memberId: number
+    deliveryType?: number
+    receiverName?: string | null
+    receiverPhone?: string | null
+    receiverAddr?: string | null
+    storeId?: number | null
+    storeName?: string | null
+    pickupCode?: string | null
+    pickupTime?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type OrderUpdateInput = {
+    orderNo?: StringFieldUpdateOperationsInput | string
+    memberId?: IntFieldUpdateOperationsInput | number
+    deliveryType?: IntFieldUpdateOperationsInput | number
+    receiverName?: NullableStringFieldUpdateOperationsInput | string | null
+    receiverPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    receiverAddr?: NullableStringFieldUpdateOperationsInput | string | null
+    storeId?: NullableIntFieldUpdateOperationsInput | number | null
+    storeName?: NullableStringFieldUpdateOperationsInput | string | null
+    pickupCode?: NullableStringFieldUpdateOperationsInput | string | null
+    pickupTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    orderNo?: StringFieldUpdateOperationsInput | string
+    memberId?: IntFieldUpdateOperationsInput | number
+    deliveryType?: IntFieldUpdateOperationsInput | number
+    receiverName?: NullableStringFieldUpdateOperationsInput | string | null
+    receiverPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    receiverAddr?: NullableStringFieldUpdateOperationsInput | string | null
+    storeId?: NullableIntFieldUpdateOperationsInput | number | null
+    storeName?: NullableStringFieldUpdateOperationsInput | string | null
+    pickupCode?: NullableStringFieldUpdateOperationsInput | string | null
+    pickupTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderCreateManyInput = {
     id?: number
+    orderNo: string
+    memberId: number
+    deliveryType?: number
+    receiverName?: string | null
+    receiverPhone?: string | null
+    receiverAddr?: string | null
+    storeId?: number | null
+    storeName?: string | null
+    pickupCode?: string | null
+    pickupTime?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type OrderUpdateManyMutationInput = {
+    orderNo?: StringFieldUpdateOperationsInput | string
+    memberId?: IntFieldUpdateOperationsInput | number
+    deliveryType?: IntFieldUpdateOperationsInput | number
+    receiverName?: NullableStringFieldUpdateOperationsInput | string | null
+    receiverPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    receiverAddr?: NullableStringFieldUpdateOperationsInput | string | null
+    storeId?: NullableIntFieldUpdateOperationsInput | number | null
+    storeName?: NullableStringFieldUpdateOperationsInput | string | null
+    pickupCode?: NullableStringFieldUpdateOperationsInput | string | null
+    pickupTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    orderNo?: StringFieldUpdateOperationsInput | string
+    memberId?: IntFieldUpdateOperationsInput | number
+    deliveryType?: IntFieldUpdateOperationsInput | number
+    receiverName?: NullableStringFieldUpdateOperationsInput | string | null
+    receiverPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    receiverAddr?: NullableStringFieldUpdateOperationsInput | string | null
+    storeId?: NullableIntFieldUpdateOperationsInput | number | null
+    storeName?: NullableStringFieldUpdateOperationsInput | string | null
+    pickupCode?: NullableStringFieldUpdateOperationsInput | string | null
+    pickupTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3305,6 +5332,21 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3333,10 +5375,17 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
+    avatarUrl?: SortOrder
     username?: SortOrder
     password?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -3347,16 +5396,20 @@ export namespace Prisma {
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
+    avatarUrl?: SortOrder
     username?: SortOrder
     password?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
+    avatarUrl?: SortOrder
     username?: SortOrder
     password?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -3379,6 +5432,24 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -3413,30 +5484,212 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type MemberNullableScalarRelationFilter = {
+    is?: MemberWhereInput | null
+    isNot?: MemberWhereInput | null
+  }
+
+  export type MemberListRelationFilter = {
+    every?: MemberWhereInput
+    some?: MemberWhereInput
+    none?: MemberWhereInput
+  }
+
+  export type MemberOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MemberCountOrderByAggregateInput = {
+    id?: SortOrder
+    openid?: SortOrder
+    unionid?: SortOrder
+    nickname?: SortOrder
+    avatarUrl?: SortOrder
+    gender?: SortOrder
+    phone?: SortOrder
+    birthday?: SortOrder
+    status?: SortOrder
+    lastLoginAt?: SortOrder
+    level?: SortOrder
+    points?: SortOrder
+    remark?: SortOrder
+    referrerId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MemberAvgOrderByAggregateInput = {
+    id?: SortOrder
+    gender?: SortOrder
+    status?: SortOrder
+    level?: SortOrder
+    points?: SortOrder
+    referrerId?: SortOrder
+  }
+
+  export type MemberMaxOrderByAggregateInput = {
+    id?: SortOrder
+    openid?: SortOrder
+    unionid?: SortOrder
+    nickname?: SortOrder
+    avatarUrl?: SortOrder
+    gender?: SortOrder
+    phone?: SortOrder
+    birthday?: SortOrder
+    status?: SortOrder
+    lastLoginAt?: SortOrder
+    level?: SortOrder
+    points?: SortOrder
+    remark?: SortOrder
+    referrerId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MemberMinOrderByAggregateInput = {
+    id?: SortOrder
+    openid?: SortOrder
+    unionid?: SortOrder
+    nickname?: SortOrder
+    avatarUrl?: SortOrder
+    gender?: SortOrder
+    phone?: SortOrder
+    birthday?: SortOrder
+    status?: SortOrder
+    lastLoginAt?: SortOrder
+    level?: SortOrder
+    points?: SortOrder
+    remark?: SortOrder
+    referrerId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MemberSumOrderByAggregateInput = {
+    id?: SortOrder
+    gender?: SortOrder
+    status?: SortOrder
+    level?: SortOrder
+    points?: SortOrder
+    referrerId?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type OrderCountOrderByAggregateInput = {
     id?: SortOrder
+    orderNo?: SortOrder
+    memberId?: SortOrder
+    deliveryType?: SortOrder
+    receiverName?: SortOrder
+    receiverPhone?: SortOrder
+    receiverAddr?: SortOrder
+    storeId?: SortOrder
+    storeName?: SortOrder
+    pickupCode?: SortOrder
+    pickupTime?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type OrderAvgOrderByAggregateInput = {
     id?: SortOrder
+    memberId?: SortOrder
+    deliveryType?: SortOrder
+    storeId?: SortOrder
   }
 
   export type OrderMaxOrderByAggregateInput = {
     id?: SortOrder
+    orderNo?: SortOrder
+    memberId?: SortOrder
+    deliveryType?: SortOrder
+    receiverName?: SortOrder
+    receiverPhone?: SortOrder
+    receiverAddr?: SortOrder
+    storeId?: SortOrder
+    storeName?: SortOrder
+    pickupCode?: SortOrder
+    pickupTime?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type OrderMinOrderByAggregateInput = {
     id?: SortOrder
+    orderNo?: SortOrder
+    memberId?: SortOrder
+    deliveryType?: SortOrder
+    receiverName?: SortOrder
+    receiverPhone?: SortOrder
+    receiverAddr?: SortOrder
+    storeId?: SortOrder
+    storeName?: SortOrder
+    pickupCode?: SortOrder
+    pickupTime?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type OrderSumOrderByAggregateInput = {
     id?: SortOrder
+    memberId?: SortOrder
+    deliveryType?: SortOrder
+    storeId?: SortOrder
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -3455,6 +5708,76 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type MemberCreateNestedOneWithoutReferralsInput = {
+    create?: XOR<MemberCreateWithoutReferralsInput, MemberUncheckedCreateWithoutReferralsInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutReferralsInput
+    connect?: MemberWhereUniqueInput
+  }
+
+  export type MemberCreateNestedManyWithoutReferrerInput = {
+    create?: XOR<MemberCreateWithoutReferrerInput, MemberUncheckedCreateWithoutReferrerInput> | MemberCreateWithoutReferrerInput[] | MemberUncheckedCreateWithoutReferrerInput[]
+    connectOrCreate?: MemberCreateOrConnectWithoutReferrerInput | MemberCreateOrConnectWithoutReferrerInput[]
+    createMany?: MemberCreateManyReferrerInputEnvelope
+    connect?: MemberWhereUniqueInput | MemberWhereUniqueInput[]
+  }
+
+  export type MemberUncheckedCreateNestedManyWithoutReferrerInput = {
+    create?: XOR<MemberCreateWithoutReferrerInput, MemberUncheckedCreateWithoutReferrerInput> | MemberCreateWithoutReferrerInput[] | MemberUncheckedCreateWithoutReferrerInput[]
+    connectOrCreate?: MemberCreateOrConnectWithoutReferrerInput | MemberCreateOrConnectWithoutReferrerInput[]
+    createMany?: MemberCreateManyReferrerInputEnvelope
+    connect?: MemberWhereUniqueInput | MemberWhereUniqueInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type MemberUpdateOneWithoutReferralsNestedInput = {
+    create?: XOR<MemberCreateWithoutReferralsInput, MemberUncheckedCreateWithoutReferralsInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutReferralsInput
+    upsert?: MemberUpsertWithoutReferralsInput
+    disconnect?: MemberWhereInput | boolean
+    delete?: MemberWhereInput | boolean
+    connect?: MemberWhereUniqueInput
+    update?: XOR<XOR<MemberUpdateToOneWithWhereWithoutReferralsInput, MemberUpdateWithoutReferralsInput>, MemberUncheckedUpdateWithoutReferralsInput>
+  }
+
+  export type MemberUpdateManyWithoutReferrerNestedInput = {
+    create?: XOR<MemberCreateWithoutReferrerInput, MemberUncheckedCreateWithoutReferrerInput> | MemberCreateWithoutReferrerInput[] | MemberUncheckedCreateWithoutReferrerInput[]
+    connectOrCreate?: MemberCreateOrConnectWithoutReferrerInput | MemberCreateOrConnectWithoutReferrerInput[]
+    upsert?: MemberUpsertWithWhereUniqueWithoutReferrerInput | MemberUpsertWithWhereUniqueWithoutReferrerInput[]
+    createMany?: MemberCreateManyReferrerInputEnvelope
+    set?: MemberWhereUniqueInput | MemberWhereUniqueInput[]
+    disconnect?: MemberWhereUniqueInput | MemberWhereUniqueInput[]
+    delete?: MemberWhereUniqueInput | MemberWhereUniqueInput[]
+    connect?: MemberWhereUniqueInput | MemberWhereUniqueInput[]
+    update?: MemberUpdateWithWhereUniqueWithoutReferrerInput | MemberUpdateWithWhereUniqueWithoutReferrerInput[]
+    updateMany?: MemberUpdateManyWithWhereWithoutReferrerInput | MemberUpdateManyWithWhereWithoutReferrerInput[]
+    deleteMany?: MemberScalarWhereInput | MemberScalarWhereInput[]
+  }
+
+  export type MemberUncheckedUpdateManyWithoutReferrerNestedInput = {
+    create?: XOR<MemberCreateWithoutReferrerInput, MemberUncheckedCreateWithoutReferrerInput> | MemberCreateWithoutReferrerInput[] | MemberUncheckedCreateWithoutReferrerInput[]
+    connectOrCreate?: MemberCreateOrConnectWithoutReferrerInput | MemberCreateOrConnectWithoutReferrerInput[]
+    upsert?: MemberUpsertWithWhereUniqueWithoutReferrerInput | MemberUpsertWithWhereUniqueWithoutReferrerInput[]
+    createMany?: MemberCreateManyReferrerInputEnvelope
+    set?: MemberWhereUniqueInput | MemberWhereUniqueInput[]
+    disconnect?: MemberWhereUniqueInput | MemberWhereUniqueInput[]
+    delete?: MemberWhereUniqueInput | MemberWhereUniqueInput[]
+    connect?: MemberWhereUniqueInput | MemberWhereUniqueInput[]
+    update?: MemberUpdateWithWhereUniqueWithoutReferrerInput | MemberUpdateWithWhereUniqueWithoutReferrerInput[]
+    updateMany?: MemberUpdateManyWithWhereWithoutReferrerInput | MemberUpdateManyWithWhereWithoutReferrerInput[]
+    deleteMany?: MemberScalarWhereInput | MemberScalarWhereInput[]
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -3464,6 +5787,20 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -3518,6 +5855,34 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -3547,6 +5912,306 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type MemberCreateWithoutReferralsInput = {
+    openid: string
+    unionid?: string | null
+    nickname?: string | null
+    avatarUrl?: string | null
+    gender?: number | null
+    phone?: string | null
+    birthday?: Date | string | null
+    status?: number
+    lastLoginAt?: Date | string | null
+    level?: number | null
+    points?: number
+    remark?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    referrer?: MemberCreateNestedOneWithoutReferralsInput
+  }
+
+  export type MemberUncheckedCreateWithoutReferralsInput = {
+    id?: number
+    openid: string
+    unionid?: string | null
+    nickname?: string | null
+    avatarUrl?: string | null
+    gender?: number | null
+    phone?: string | null
+    birthday?: Date | string | null
+    status?: number
+    lastLoginAt?: Date | string | null
+    level?: number | null
+    points?: number
+    remark?: string | null
+    referrerId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MemberCreateOrConnectWithoutReferralsInput = {
+    where: MemberWhereUniqueInput
+    create: XOR<MemberCreateWithoutReferralsInput, MemberUncheckedCreateWithoutReferralsInput>
+  }
+
+  export type MemberCreateWithoutReferrerInput = {
+    openid: string
+    unionid?: string | null
+    nickname?: string | null
+    avatarUrl?: string | null
+    gender?: number | null
+    phone?: string | null
+    birthday?: Date | string | null
+    status?: number
+    lastLoginAt?: Date | string | null
+    level?: number | null
+    points?: number
+    remark?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    referrals?: MemberCreateNestedManyWithoutReferrerInput
+  }
+
+  export type MemberUncheckedCreateWithoutReferrerInput = {
+    id?: number
+    openid: string
+    unionid?: string | null
+    nickname?: string | null
+    avatarUrl?: string | null
+    gender?: number | null
+    phone?: string | null
+    birthday?: Date | string | null
+    status?: number
+    lastLoginAt?: Date | string | null
+    level?: number | null
+    points?: number
+    remark?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    referrals?: MemberUncheckedCreateNestedManyWithoutReferrerInput
+  }
+
+  export type MemberCreateOrConnectWithoutReferrerInput = {
+    where: MemberWhereUniqueInput
+    create: XOR<MemberCreateWithoutReferrerInput, MemberUncheckedCreateWithoutReferrerInput>
+  }
+
+  export type MemberCreateManyReferrerInputEnvelope = {
+    data: MemberCreateManyReferrerInput | MemberCreateManyReferrerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MemberUpsertWithoutReferralsInput = {
+    update: XOR<MemberUpdateWithoutReferralsInput, MemberUncheckedUpdateWithoutReferralsInput>
+    create: XOR<MemberCreateWithoutReferralsInput, MemberUncheckedCreateWithoutReferralsInput>
+    where?: MemberWhereInput
+  }
+
+  export type MemberUpdateToOneWithWhereWithoutReferralsInput = {
+    where?: MemberWhereInput
+    data: XOR<MemberUpdateWithoutReferralsInput, MemberUncheckedUpdateWithoutReferralsInput>
+  }
+
+  export type MemberUpdateWithoutReferralsInput = {
+    openid?: StringFieldUpdateOperationsInput | string
+    unionid?: NullableStringFieldUpdateOperationsInput | string | null
+    nickname?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    points?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrer?: MemberUpdateOneWithoutReferralsNestedInput
+  }
+
+  export type MemberUncheckedUpdateWithoutReferralsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    openid?: StringFieldUpdateOperationsInput | string
+    unionid?: NullableStringFieldUpdateOperationsInput | string | null
+    nickname?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    points?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    referrerId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MemberUpsertWithWhereUniqueWithoutReferrerInput = {
+    where: MemberWhereUniqueInput
+    update: XOR<MemberUpdateWithoutReferrerInput, MemberUncheckedUpdateWithoutReferrerInput>
+    create: XOR<MemberCreateWithoutReferrerInput, MemberUncheckedCreateWithoutReferrerInput>
+  }
+
+  export type MemberUpdateWithWhereUniqueWithoutReferrerInput = {
+    where: MemberWhereUniqueInput
+    data: XOR<MemberUpdateWithoutReferrerInput, MemberUncheckedUpdateWithoutReferrerInput>
+  }
+
+  export type MemberUpdateManyWithWhereWithoutReferrerInput = {
+    where: MemberScalarWhereInput
+    data: XOR<MemberUpdateManyMutationInput, MemberUncheckedUpdateManyWithoutReferrerInput>
+  }
+
+  export type MemberScalarWhereInput = {
+    AND?: MemberScalarWhereInput | MemberScalarWhereInput[]
+    OR?: MemberScalarWhereInput[]
+    NOT?: MemberScalarWhereInput | MemberScalarWhereInput[]
+    id?: IntFilter<"Member"> | number
+    openid?: StringFilter<"Member"> | string
+    unionid?: StringNullableFilter<"Member"> | string | null
+    nickname?: StringNullableFilter<"Member"> | string | null
+    avatarUrl?: StringNullableFilter<"Member"> | string | null
+    gender?: IntNullableFilter<"Member"> | number | null
+    phone?: StringNullableFilter<"Member"> | string | null
+    birthday?: DateTimeNullableFilter<"Member"> | Date | string | null
+    status?: IntFilter<"Member"> | number
+    lastLoginAt?: DateTimeNullableFilter<"Member"> | Date | string | null
+    level?: IntNullableFilter<"Member"> | number | null
+    points?: IntFilter<"Member"> | number
+    remark?: StringNullableFilter<"Member"> | string | null
+    referrerId?: IntNullableFilter<"Member"> | number | null
+    createdAt?: DateTimeFilter<"Member"> | Date | string
+    updatedAt?: DateTimeFilter<"Member"> | Date | string
+  }
+
+  export type MemberCreateManyReferrerInput = {
+    id?: number
+    openid: string
+    unionid?: string | null
+    nickname?: string | null
+    avatarUrl?: string | null
+    gender?: number | null
+    phone?: string | null
+    birthday?: Date | string | null
+    status?: number
+    lastLoginAt?: Date | string | null
+    level?: number | null
+    points?: number
+    remark?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MemberUpdateWithoutReferrerInput = {
+    openid?: StringFieldUpdateOperationsInput | string
+    unionid?: NullableStringFieldUpdateOperationsInput | string | null
+    nickname?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    points?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrals?: MemberUpdateManyWithoutReferrerNestedInput
+  }
+
+  export type MemberUncheckedUpdateWithoutReferrerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    openid?: StringFieldUpdateOperationsInput | string
+    unionid?: NullableStringFieldUpdateOperationsInput | string | null
+    nickname?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    points?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    referrals?: MemberUncheckedUpdateManyWithoutReferrerNestedInput
+  }
+
+  export type MemberUncheckedUpdateManyWithoutReferrerInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    openid?: StringFieldUpdateOperationsInput | string
+    unionid?: NullableStringFieldUpdateOperationsInput | string | null
+    nickname?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableIntFieldUpdateOperationsInput | number | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    birthday?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    lastLoginAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    points?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

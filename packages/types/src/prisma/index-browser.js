@@ -122,14 +122,45 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
+  avatarUrl: 'avatarUrl',
   username: 'username',
   password: 'password',
+  role: 'role',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MemberScalarFieldEnum = {
+  id: 'id',
+  openid: 'openid',
+  unionid: 'unionid',
+  nickname: 'nickname',
+  avatarUrl: 'avatarUrl',
+  gender: 'gender',
+  phone: 'phone',
+  birthday: 'birthday',
+  status: 'status',
+  lastLoginAt: 'lastLoginAt',
+  level: 'level',
+  points: 'points',
+  remark: 'remark',
+  referrerId: 'referrerId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.OrderScalarFieldEnum = {
   id: 'id',
+  orderNo: 'orderNo',
+  memberId: 'memberId',
+  deliveryType: 'deliveryType',
+  receiverName: 'receiverName',
+  receiverPhone: 'receiverPhone',
+  receiverAddr: 'receiverAddr',
+  storeId: 'storeId',
+  storeName: 'storeName',
+  pickupCode: 'pickupCode',
+  pickupTime: 'pickupTime',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -144,9 +175,15 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
+  Member: 'Member',
   Order: 'Order'
 };
 
