@@ -15,5 +15,12 @@
   },
 
   "files.insertFinalNewline": true,
-  "cSpell.words": ["Appstore", "Etheral", "generouted", "Shopbag", "Tabler"]
+  "cSpell.words": [
+    "Appstore",
+    "autoincrement",
+    "Etheral",
+    "generouted",
+    "Shopbag",
+    "Tabler"
+  ]
 }
