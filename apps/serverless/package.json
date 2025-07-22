@@ -1,5 +1,5 @@
 {
-  "name": "cloud-functions",
+  "name": "serverless",
   "version": "1.0.0",
   "private": true,
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
     "copy-json": "copyfiles -u 1 \"src/**/*.json\" dist/",
     "build": "tsc && npm run copy-json",
     "dev": "npm-run-all --parallel watch-ts watch-json",
-       "lint": "eslint . --max-warnings 0",
+    "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
