@@ -149,18 +149,178 @@ exports.Prisma.MemberScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.AddressScalarFieldEnum = {
+  id: 'id',
+  memberId: 'memberId',
+  name: 'name',
+  phone: 'phone',
+  province: 'province',
+  city: 'city',
+  district: 'district',
+  detail: 'detail',
+  isDefault: 'isDefault',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EventScalarFieldEnum = {
+  id: 'id',
+  memberId: 'memberId',
+  openid: 'openid',
+  eventType: 'eventType',
+  pagePath: 'pagePath',
+  elementId: 'elementId',
+  elementText: 'elementText',
+  params: 'params',
+  timestamp: 'timestamp',
+  userAgent: 'userAgent',
+  ip: 'ip',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  parentId: 'parentId',
+  sort: 'sort',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProductSPUScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  categoryId: 'categoryId',
+  brand: 'brand',
+  images: 'images',
+  status: 'status',
+  sort: 'sort',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProductSKUScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  skuCode: 'skuCode',
+  name: 'name',
+  price: 'price',
+  stock: 'stock',
+  images: 'images',
+  specs: 'specs',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CouponScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  amount: 'amount',
+  minAmount: 'minAmount',
+  maxAmount: 'maxAmount',
+  totalCount: 'totalCount',
+  usedCount: 'usedCount',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  status: 'status',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CouponUserScalarFieldEnum = {
+  id: 'id',
+  memberId: 'memberId',
+  couponId: 'couponId',
+  status: 'status',
+  usedAt: 'usedAt',
+  expireAt: 'expireAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CouponProductScalarFieldEnum = {
+  id: 'id',
+  couponId: 'couponId',
+  productId: 'productId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CouponCategoryScalarFieldEnum = {
+  id: 'id',
+  couponId: 'couponId',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CartScalarFieldEnum = {
+  id: 'id',
+  memberId: 'memberId',
+  skuId: 'skuId',
+  quantity: 'quantity',
+  selected: 'selected',
+  isValid: 'isValid',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.StoreScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  address: 'address',
+  phone: 'phone',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.OrderScalarFieldEnum = {
   id: 'id',
   orderNo: 'orderNo',
   memberId: 'memberId',
+  status: 'status',
+  totalAmount: 'totalAmount',
+  payAmount: 'payAmount',
+  payType: 'payType',
+  payTime: 'payTime',
+  couponId: 'couponId',
+  couponName: 'couponName',
+  couponAmount: 'couponAmount',
   deliveryType: 'deliveryType',
   receiverName: 'receiverName',
   receiverPhone: 'receiverPhone',
+  reservePhone: 'reservePhone',
   receiverAddr: 'receiverAddr',
   storeId: 'storeId',
   storeName: 'storeName',
   pickupCode: 'pickupCode',
   pickupTime: 'pickupTime',
+  deliveryNo: 'deliveryNo',
+  deliveryTime: 'deliveryTime',
+  cancelReason: 'cancelReason',
+  afterSaleStatus: 'afterSaleStatus',
+  remark: 'remark',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OrderItemScalarFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  productId: 'productId',
+  productName: 'productName',
+  productImg: 'productImg',
+  price: 'price',
+  quantity: 'quantity',
+  total: 'total',
+  skuId: 'skuId',
+  skuName: 'skuName',
+  skuSpecs: 'skuSpecs',
+  remark: 'remark',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -168,6 +328,11 @@ exports.Prisma.OrderScalarFieldEnum = {
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -180,11 +345,29 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
   Member: 'Member',
-  Order: 'Order'
+  Address: 'Address',
+  Event: 'Event',
+  Category: 'Category',
+  ProductSPU: 'ProductSPU',
+  ProductSKU: 'ProductSKU',
+  Coupon: 'Coupon',
+  CouponUser: 'CouponUser',
+  CouponProduct: 'CouponProduct',
+  CouponCategory: 'CouponCategory',
+  Cart: 'Cart',
+  Store: 'Store',
+  Order: 'Order',
+  OrderItem: 'OrderItem'
 };
 
 /**

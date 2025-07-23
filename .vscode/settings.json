@@ -21,8 +21,12 @@
     "Etheral",
     "generouted",
     "Shopbag",
+    "skus",
     "Tabler",
     "unionid"
   ],
-  "editor.dropIntoEditor.preferences": []
+  "editor.dropIntoEditor.preferences": [],
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
 }

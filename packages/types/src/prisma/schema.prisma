@@ -38,20 +38,227 @@ model Member {
   referrals   Member[]  @relation("Referrals") // 被推荐的会员列表
   createdAt   DateTime  @default(now()) // 创建时间，默认当前时间
   updatedAt   DateTime  @updatedAt // 更新时间，自动更新
+  addresses   Address[] // 收货地址列表
+}
+
+model Address {
+  id        Int      @id @default(autoincrement()) // 主键，自增ID
+  memberId  Int // 会员ID
+  name      String // 收货人姓名
+  phone     String // 收货人手机号
+  province  String // 省份
+  city      String // 城市
+  district  String // 区县
+  detail    String // 详细地址
+  isDefault Boolean  @default(false) // 是否默认地址
+  createdAt DateTime @default(now()) // 创建时间，默认当前时间
+  updatedAt DateTime @updatedAt // 更新时间，自动更新
+  Member    Member   @relation(fields: [memberId], references: [id])
+
+  @@index([memberId]) // 按会员查询地址
+  @@index([isDefault]) // 按默认状态查询
+}
+
+model Event {
+  id          Int      @id @default(autoincrement()) // 主键，自增ID
+  memberId    Int? // 会员ID（未登录时为null）
+  openid      String? // 微信openid（未登录时使用）
+  eventType   String // 事件类型（如：page_view、click、purchase等）
+  pagePath    String? // 页面路径
+  elementId   String? // 元素ID
+  elementText String? // 元素文本
+  params      Json? // 事件参数（如：商品ID、分类ID等）
+  timestamp   DateTime @default(now()) // 事件时间戳
+  userAgent   String? // 用户代理
+  ip          String? // IP地址
+  createdAt   DateTime @default(now()) // 创建时间，默认当前时间
+
+  @@index([memberId]) // 按会员查询事件
+  @@index([openid]) // 按openid查询事件
+  @@index([eventType]) // 按事件类型查询
+  @@index([timestamp]) // 按时间查询事件
+  @@index([pagePath]) // 按页面查询事件
+}
+
+model Category {
+  id        Int      @id @default(autoincrement()) // 主键，自增ID
+  name      String // 分类名称
+  parentId  Int? // 父分类ID
+  sort      Int      @default(0) // 排序
+  status    Int      @default(1) // 状态（0禁用 1启用）
+  createdAt DateTime @default(now()) // 创建时间，默认当前时间
+  updatedAt DateTime @updatedAt // 更新时间，自动更新
+}
+
+model ProductSPU {
+  id          Int          @id @default(autoincrement()) // 主键，自增ID
+  name        String // 商品名称（SPU名称）
+  description String? // 商品描述
+  categoryId  Int? // 分类ID
+  brand       String? // 品牌
+  images      String[] // 商品主图列表
+  status      Int          @default(1) // 商品状态（0下架 1上架）
+  sort        Int          @default(0) // 排序
+  createdAt   DateTime     @default(now()) // 创建时间，默认当前时间
+  updatedAt   DateTime     @updatedAt // 更新时间，自动更新
+  skus        ProductSKU[] // 关联的SKU列表
+}
+
+model ProductSKU {
+  id        Int        @id @default(autoincrement()) // 主键，自增ID
+  productId Int // 关联的SPU ID
+  skuCode   String     @unique // SKU编码，唯一
+  name      String // SKU名称（如：红色 XL）
+  price     Decimal // 价格
+  stock     Int        @default(0) // 库存数量
+  images    String[] // SKU图片列表
+  specs     Json? // 规格属性（如：{"color": "红色", "size": "XL"}）
+  status    Int        @default(1) // 状态（0下架 1上架）
+  createdAt DateTime   @default(now()) // 创建时间，默认当前时间
+  updatedAt DateTime   @updatedAt // 更新时间，自动更新
+  product   ProductSPU @relation(fields: [productId], references: [id]) // 关联SPU
+
+  @@index([productId]) // 按SPU查询SKU
+  @@index([status]) // 按状态查询SKU
+}
+
+model Coupon {
+  id          Int      @id @default(autoincrement()) // 主键，自增ID
+  name        String // 优惠券名称
+  type        Int      @default(1) // 优惠券类型（1满减券 2折扣券 3无门槛券）
+  amount      Decimal // 优惠金额或折扣比例
+  minAmount   Decimal  @default(0) // 最低消费金额
+  maxAmount   Decimal? // 最大优惠金额（折扣券使用）
+  totalCount  Int      @default(0) // 发放总数
+  usedCount   Int      @default(0) // 已使用数量
+  startTime   DateTime // 生效时间
+  endTime     DateTime // 失效时间
+  status      Int      @default(1) // 状态（0禁用 1启用）
+  description String? // 使用说明
+  createdAt   DateTime @default(now()) // 创建时间，默认当前时间
+  updatedAt   DateTime @updatedAt // 更新时间，自动更新
+
+  @@index([status]) // 按状态查询优惠券
+  @@index([startTime, endTime]) // 按有效期查询优惠券
+}
+
+model CouponUser {
+  id        Int       @id @default(autoincrement()) // 主键，自增ID
+  memberId  Int // 会员ID
+  couponId  Int // 优惠券ID
+  status    Int       @default(0) // 状态（0未使用 1已使用 2已过期）
+  usedAt    DateTime? // 使用时间
+  expireAt  DateTime? // 过期时间
+  createdAt DateTime  @default(now()) // 创建时间，默认当前时间
+  updatedAt DateTime  @updatedAt // 更新时间，自动更新
+
+  @@index([memberId]) // 按会员查询优惠券
+  @@index([couponId]) // 按优惠券查询用户
+  @@index([status]) // 按状态查询
+}
+
+model CouponProduct {
+  id        Int      @id @default(autoincrement()) // 主键，自增ID
+  couponId  Int // 优惠券ID
+  productId Int // 商品SPU ID
+  createdAt DateTime @default(now()) // 创建时间，默认当前时间
+
+  @@unique([couponId, productId]) // 同一优惠券同一商品只能有一条记录
+  @@index([couponId]) // 按优惠券查询适用商品
+  @@index([productId]) // 按商品查询适用优惠券
+}
+
+model CouponCategory {
+  id         Int      @id @default(autoincrement()) // 主键，自增ID
+  couponId   Int // 优惠券ID
+  categoryId Int // 分类ID
+  createdAt  DateTime @default(now()) // 创建时间，默认当前时间
+
+  @@unique([couponId, categoryId]) // 同一优惠券同一分类只能有一条记录
+  @@index([couponId]) // 按优惠券查询适用分类
+  @@index([categoryId]) // 按分类查询适用优惠券
+}
+
+model Cart {
+  id        Int      @id @default(autoincrement()) // 主键，自增ID
+  memberId  Int // 会员ID
+  skuId     Int // 商品SKU ID
+  quantity  Int      @default(1) // 数量
+  selected  Boolean  @default(true) // 是否选中
+  isValid   Boolean  @default(true) // 是否有效（商品下架、删除等情况下失效）
+  createdAt DateTime @default(now()) // 创建时间，默认当前时间
+  updatedAt DateTime @updatedAt // 更新时间，自动更新
+
+  @@unique([memberId, skuId]) // 同一会员同一SKU只能有一条记录
+  @@index([memberId]) // 按会员查询购物车
+  @@index([selected]) // 按选中状态查询
+  @@index([isValid]) // 按有效状态查询
+}
+
+model Store {
+  id        Int      @id @default(autoincrement()) // 主键，自增ID
+  name      String // 门店名称
+  address   String // 门店地址
+  phone     String? // 门店电话
+  status    Int      @default(1) // 状态（0关闭 1营业）
+  createdAt DateTime @default(now()) // 创建时间，默认当前时间
+  updatedAt DateTime @updatedAt // 更新时间，自动更新
 }
 
 model Order {
-  id            Int       @id @default(autoincrement()) // 主键，自增ID
-  orderNo       String    @unique // 订单编号，唯一
-  memberId      Int // 下单会员ID
-  deliveryType  Int       @default(0) // 配送方式（0配送 1自提）
-  receiverName  String? // 收货人姓名
-  receiverPhone String? // 收货人手机号
-  receiverAddr  String? // 收货地址
-  storeId       Int? // 自提门店ID
-  storeName     String? // 自提门店名称
-  pickupCode    String? // 自提码
-  pickupTime    DateTime? // 预约自提时间
-  createdAt     DateTime  @default(now()) // 创建时间，默认当前时间
-  updatedAt     DateTime  @updatedAt // 更新时间，自动更新
+  id              Int         @id @default(autoincrement()) // 主键，自增ID
+  orderNo         String      @unique // 订单编号，唯一
+  memberId        Int // 下单会员ID
+  status          Int         @default(0) // 订单状态（0待支付 1已支付 2已发货 3已完成 4已取消等）
+  totalAmount     Decimal     @default(0) // 订单总金额
+  payAmount       Decimal     @default(0) // 实际支付金额
+  payType         Int? // 支付方式（1微信 2支付宝等）
+  payTime         DateTime? // 支付时间
+  couponId        Int? // 优惠券ID
+  couponName      String? // 优惠券名称
+  couponAmount    Decimal     @default(0) // 优惠券抵扣金额
+  deliveryType    Int         @default(0) // 配送方式（0配送 1自提）
+  receiverName    String? // 收货人姓名
+  receiverPhone   String? // 收货人手机号
+  reservePhone    String? // 预留电话
+  receiverAddr    String? // 收货地址
+  storeId         Int? // 自提门店ID
+  storeName       String? // 自提门店名称
+  pickupCode      String? // 自提码
+  pickupTime      DateTime? // 预约自提时间
+  deliveryNo      String? // 物流单号
+  deliveryTime    DateTime? // 发货时间
+  cancelReason    String? // 取消原因
+  afterSaleStatus Int         @default(0) // 售后状态（0无售后 1退款中 2退款完成 3换货中 4换货完成）
+  remark          String? // 订单备注
+  createdAt       DateTime    @default(now()) // 创建时间，默认当前时间
+  updatedAt       DateTime    @updatedAt // 更新时间，自动更新
+  items           OrderItem[] // 订单明细列表
+
+  @@index([memberId]) // 按会员查询订单
+  @@index([status]) // 按状态查询订单
+  @@index([createdAt]) // 按时间查询订单
+  @@index([afterSaleStatus]) // 按售后状态查询订单
+}
+
+model OrderItem {
+  id          Int      @id @default(autoincrement()) // 主键，自增ID
+  orderId     Int // 订单ID
+  productId   Int // 商品ID
+  productName String // 商品名称
+  productImg  String? // 商品图片
+  price       Decimal // 商品单价
+  quantity    Int // 购买数量
+  total       Decimal // 小计金额
+  skuId       Int? // 商品SKU ID
+  skuName     String? // SKU名称
+  skuSpecs    Json? // SKU规格快照（如：{"color": "红色", "size": "XL"}）
+  remark      String? // 备注
+  createdAt   DateTime @default(now()) // 创建时间，默认当前时间
+  updatedAt   DateTime @updatedAt // 更新时间，自动更新
+  order       Order    @relation(fields: [orderId], references: [id]) // 关联订单
+
+  @@index([orderId]) // 按订单查询明细
+  @@index([productId]) // 按商品查询明细
+  @@index([skuId]) // 按SKU查询明细
 }
