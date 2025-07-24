@@ -4,6 +4,7 @@ import { SignInDto } from './dto/sign-in.dto'
 import { Res, SignInResponse } from '@repo/types'
 import { JwtService } from '@nestjs/jwt'
 import bcrypt from 'bcrypt'
+import { formatResponse } from '@/utils/response'
 
 @Injectable()
 export class SignInService {
@@ -26,12 +27,8 @@ export class SignInService {
     }
 
     const payload = { sub: user.id, username: user.username }
-    return {
-      code: 200,
-      message: 'success',
-      data: {
-        access_token: await this.jwtService.signAsync(payload)
-      }
-    }
+    return formatResponse({
+      access_token: await this.jwtService.signAsync(payload)
+    })
   }
 }
