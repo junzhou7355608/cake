@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator'
 
-export class SignInDto {
+export class AuthDto {
   // 用户账号，要求为非空字符串
   @IsString() // 验证为字符串类型
   @IsNotEmpty() // 验证不能为空

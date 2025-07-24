@@ -4,12 +4,11 @@ import { AppService } from './app.service'
 import { AuthModule } from './auth/auth.module'
 import { UsersModule } from './users/users.module'
 import { PrismaService } from './prisma/prisma.service'
-import { SignInService } from './sign-in/sign-in.service'
-import { SignInController } from './sign-in/sign-in.controller'
+import { OrderModule } from './order/order.module';
 
 @Module({
-  imports: [AuthModule, UsersModule],
-  controllers: [AppController, SignInController],
-  providers: [AppService, PrismaService, SignInService]
+  imports: [AuthModule, UsersModule, OrderModule],
+  controllers: [AppController],
+  providers: [AppService, PrismaService]
 })
 export class AppModule {}
