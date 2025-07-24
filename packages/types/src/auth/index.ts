@@ -1,8 +1,8 @@
-export interface SignInParams {
+export interface AuthReq {
   username: string
   password: string
 }
 
-export interface SignInResponse {
+export interface AuthRes {
   access_token: string
 }
