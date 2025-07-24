@@ -23,7 +23,8 @@
     "Shopbag",
     "skus",
     "Tabler",
-    "unionid"
+    "unionid",
+    "WECHAT"
   ],
   "editor.dropIntoEditor.preferences": [],
   "[prisma]": {

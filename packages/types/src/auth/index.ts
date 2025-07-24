@@ -1,3 +1,11 @@
+import { UserType } from '../common'
+
+export interface AuthPayload {
+  sub: string
+  username: string
+  type: UserType
+}
+
 export interface AuthReq {
   username: string
   password: string

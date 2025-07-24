@@ -9,6 +9,9 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('login')
   signIn(@Body() signInDto: AuthDto) {
-    return this.authService.signIn(signInDto.username, signInDto.password)
+    return this.authService.signIn({
+      username: signInDto.username,
+      password: signInDto.password
+    })
   }
 }
