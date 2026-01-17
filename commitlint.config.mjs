@@ -30,6 +30,7 @@ export default {
       [
         'admin',
         'web',
+        'server',
         'config',
         'hooks',
         'models',

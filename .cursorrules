@@ -44,7 +44,7 @@
 - **必须**在生成 commit 信息前读取 `commitlint.config.mjs` 文件，确保符合项目规范
 - 使用 Conventional Commits 格式：`<type>(<scope>): <subject>`
 - **type** 类型（必选）：`feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
-- **scope** 范围（必选，小写）：`admin`, `web`, `config`, `hooks`, `models`, `services`, `ui`, `utils`, `docs`, `ci`
+- **scope** 范围（必选，小写）：`admin`, `web`, `server`, `config`, `hooks`, `models`, `services`, `ui`, `utils`, `docs`, `ci`
 - **subject** 描述（必选）：简洁描述变更内容，最大长度 100 字符
 - **header** 总长度不超过 100 字符
 - 示例：
