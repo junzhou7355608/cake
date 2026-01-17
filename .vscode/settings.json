@@ -1,33 +1,17 @@
 {
+  "prettier.enable": true,
+  "eslint.enable": true,
   "eslint.workingDirectories": [
     {
       "mode": "auto"
     }
   ],
-  "prettier.enable": true,
-  "eslint.enable": true,
-
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always"
-  },
-
-  "files.insertFinalNewline": true,
-  "cSpell.words": [
-    "Appstore",
-    "autoincrement",
-    "Etheral",
-    "generouted",
-    "Shopbag",
-    "skus",
-    "Tabler",
-    "unionid",
-    "WECHAT"
-  ],
-  "editor.dropIntoEditor.preferences": [],
-  "[prisma]": {
-    "editor.defaultFormatter": "Prisma.prisma"
-  }
+  "editor.codeActionsOnSave": [
+    "source.addMissingImports",
+    "source.fixAll",
+    "source.organizeImports",
+    "editor.formatOnSave"
+  ]
 }

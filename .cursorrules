@@ -1,0 +1,61 @@
+# Cursor AI 项目规则
+
+## 项目结构
+- 这是一个使用 pnpm workspace 和 Turbo 的 monorepo 项目
+- 主要应用位于 `apps/` 目录
+- 共享包位于 `packages/` 目录
+- UI 组件库位于 `packages/ui`
+
+## 技术栈
+- **框架**: Next.js 16, React 19
+- **语言**: TypeScript (严格模式)
+- **样式**: Tailwind CSS 4
+- **UI 组件**: Radix UI + 自定义组件库
+- **包管理**: pnpm 9.0.0
+- **构建工具**: Turbo
+
+## 代码规范
+- 使用 TypeScript 严格模式，遵循项目的 TypeScript 配置
+- 遵循项目的 ESLint 配置（@repo/eslint-config）
+- 使用 Prettier 进行代码格式化
+- 优先使用函数式组件和 React Hooks
+- 使用 Next.js App Router 约定（app 目录）
+- 组件使用命名导出（named exports）
+
+## 组件开发
+- UI 组件应放在 `packages/ui/src/components/` 目录
+- 每个组件应有独立的文件夹，包含组件文件和 index.ts
+- 使用 `cn()` 工具函数（来自 `@repo/ui/src/utils/cn.ts`）合并 Tailwind 类名
+- 优先使用 Radix UI 作为基础组件
+- 组件应支持 TypeScript 类型定义
+
+## 文件组织
+- 使用工作区协议引用内部包（如 `@repo/ui`, `@repo/eslint-config`）
+- 遵循 monorepo 最佳实践，避免循环依赖
+- 共享代码放在 `packages/` 目录
+
+## 代码风格
+- 代码注释使用中文
+- 变量和函数名使用英文
+- 优先使用现代 JavaScript/TypeScript 特性（async/await, 可选链等）
+- 保持代码简洁、可读、可维护
+
+## Commit 信息规范
+- **必须**在生成 commit 信息前读取 `commitlint.config.mjs` 文件，确保符合项目规范
+- 使用 Conventional Commits 格式：`<type>(<scope>): <subject>`
+- **type** 类型（必选）：`feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+- **scope** 范围（必选，小写）：`admin`, `web`, `config`, `hooks`, `models`, `services`, `ui`, `utils`, `docs`, `ci`
+- **subject** 描述（必选）：简洁描述变更内容，最大长度 100 字符
+- **header** 总长度不超过 100 字符
+- 示例：
+  - `feat(web): 添加用户登录功能`
+  - `fix(ui): 修复按钮点击事件处理`
+  - `docs(config): 更新 README 文档`
+  - `refactor(web): 重构用户认证逻辑`
+
+## 注意事项
+- 运行 `pnpm lint` 确保代码通过 ESLint 检查
+- 运行 `pnpm check-types` 确保类型检查通过
+- 提交前确保代码已格式化（`pnpm format`）
+- 生成 commit 信息时，必须先读取 `commitlint.config.mjs` 确保符合规范
+
