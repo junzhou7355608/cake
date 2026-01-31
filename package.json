@@ -2,12 +2,13 @@
   "name": "cake",
   "private": true,
   "scripts": {
+    "prepare": "husky",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "prepare": "husky"
+    "check-all": "pnpm lint && pnpm check-types && pnpm format"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.2.0",
