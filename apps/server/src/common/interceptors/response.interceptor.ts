@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiResponse } from '@common/dto/response.dto';
+import { ApiResponse, SUCCESS_CODE } from '@common/dto/response.dto';
 
 @Injectable()
 export class ResponseInterceptor<T> implements NestInterceptor<
@@ -19,7 +19,7 @@ export class ResponseInterceptor<T> implements NestInterceptor<
   ): Observable<ApiResponse<T>> {
     return next.handle().pipe(
       map((data) => ({
-        code: context.switchToHttp().getResponse().statusCode,
+        code: SUCCESS_CODE,
         data: data ?? null,
       })),
     );

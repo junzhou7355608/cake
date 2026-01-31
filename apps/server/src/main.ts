@@ -1,14 +1,23 @@
 import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
+import { ConfigService } from '@nestjs/config';
+import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from '@/app.module';
-import { AllExceptionsFilter } from '@common/filters/http-exception.filter';
-import { ResponseInterceptor } from '@common/interceptors/response.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
+
   app.setGlobalPrefix('api');
-  app.useGlobalFilters(new AllExceptionsFilter());
-  app.useGlobalInterceptors(new ResponseInterceptor());
-  await app.listen(process.env.PORT ?? 3000);
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true, // 剥离 DTO 中未定义的属性
+      transform: true, // 自动转换类型（如 string -> number）
+      forbidNonWhitelisted: false, // 存在未定义属性时仅剥离，不抛错
+    }),
+  );
+
+  const port = configService.get<number>('port') ?? 3000;
+  await app.listen(port);
 }
 bootstrap();

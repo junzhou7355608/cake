@@ -6,6 +6,7 @@ import {
   HttpStatus,
   Logger,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { Request, Response } from 'express';
 import { ApiResponse } from '@common/dto/response.dto';
 
@@ -13,19 +14,26 @@ import { ApiResponse } from '@common/dto/response.dto';
 export class AllExceptionsFilter implements ExceptionFilter {
   private readonly logger = new Logger(AllExceptionsFilter.name);
 
+  constructor(private readonly configService: ConfigService) {}
+
   catch(exception: unknown, host: ArgumentsHost): void {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
 
     const { status, body } = this.getExceptionPayload(exception);
+    const traceId = (request as Request & { traceId?: string }).traceId;
+
     if (status >= 500) {
       this.logger.error(
-        `${request.method} ${request.url} ${status}`,
+        `[${traceId ?? '-'}] ${request.method} ${request.url} ${status}`,
         exception instanceof Error ? exception.stack : String(exception),
       );
     }
 
+    if (traceId) {
+      response.setHeader('x-trace-id', traceId);
+    }
     response.status(status).json(body);
   }
 
@@ -36,32 +44,35 @@ export class AllExceptionsFilter implements ExceptionFilter {
     if (exception instanceof HttpException) {
       const status = exception.getStatus();
       const exceptionResponse = exception.getResponse();
-      const message =
+      const res =
         typeof exceptionResponse === 'string'
-          ? exceptionResponse
-          : ((exceptionResponse as Record<string, unknown>)?.message ??
-            exception.message);
-      const resolvedMessage = Array.isArray(message) ? message[0] : message;
+          ? { message: exceptionResponse }
+          : (exceptionResponse as Record<string, unknown>);
+
+      const message = Array.isArray(res?.message)
+        ? res.message[0]
+        : ((res?.message as string) ?? exception.message);
+      const code = (res?.code as number) ?? status;
 
       return {
         status,
         body: {
-          code: status,
+          code,
           data: null,
-          message: resolvedMessage ?? '请求失败',
+          message: (message as string) ?? '请求失败',
         },
       };
     }
+
+    const isProduction =
+      this.configService.get<string>('nodeEnv') === 'production';
 
     return {
       status: HttpStatus.INTERNAL_SERVER_ERROR,
       body: {
         code: HttpStatus.INTERNAL_SERVER_ERROR,
         data: null,
-        message:
-          process.env['NODE_ENV'] === 'production'
-            ? '服务器内部错误'
-            : String(exception),
+        message: isProduction ? '服务器内部错误' : String(exception),
       },
     };
   }
