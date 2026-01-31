@@ -1,8 +1,8 @@
-import { Controller, Get, Patch, Body, UseGuards } from '@nestjs/common';
-import { UserService } from '../../../modules/user/user.service';
-import { UpdateUserDto } from '../../../modules/user/dto/update-user.dto';
-import { MiniappAuthGuard } from '../../../common/auth/guards/miniapp-auth.guard';
-import { CurrentUser } from '../../../common/decorators/current-user.decorator';
+import { Body, Controller, Get, Patch, UseGuards } from '@nestjs/common';
+import { MiniappAuthGuard } from '@common/auth/guards/miniapp-auth.guard';
+import { CurrentUser } from '@common/decorators/current-user.decorator';
+import { UpdateUserDto } from '@modules/user/dto/update-user.dto';
+import { UserService } from '@modules/user/user.service';
 /**
  * 小程序端 - 用户相关接口
  * 路由: /api/miniapp/users

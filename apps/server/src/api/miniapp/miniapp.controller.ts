@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { Public } from '../../common/auth/decorators/public.decorator';
+import { Public } from '@common/auth/decorators/public.decorator';
 
 /**
  * 小程序端 API 入口

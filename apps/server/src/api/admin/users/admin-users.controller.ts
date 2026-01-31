@@ -8,11 +8,11 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { UserService } from '../../../modules/user/user.service';
-import { CreateUserDto } from '../../../modules/user/dto/create-user.dto';
-import { UpdateUserDto } from '../../../modules/user/dto/update-user.dto';
-import { AdminAuthGuard } from '../../../common/auth/guards/admin-auth.guard';
-import { Public } from '../../../common/auth/decorators/public.decorator';
+import { UserService } from '@modules/user/user.service';
+import { CreateUserDto } from '@modules/user/dto/create-user.dto';
+import { UpdateUserDto } from '@modules/user/dto/update-user.dto';
+import { AdminAuthGuard } from '@common/auth/guards/admin-auth.guard';
+import { Public } from '@common/auth/decorators/public.decorator';
 
 /**
  * 管理后台 - 用户管理接口
